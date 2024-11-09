@@ -1,22 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Welcome to Our Platform</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Join our community today and explore all the features we offer!
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="button-group">
+          <button className="App-button" onClick={() => alert("Redirect to Login")}>Login</button>
+          <button className="App-button" onClick={() => alert("Redirect to Sign Up")}>Sign Up</button>
+        </div>
       </header>
     </div>
   );
