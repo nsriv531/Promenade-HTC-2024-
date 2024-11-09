@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoggingIn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login form submission logic here
+    if (username === 'admin' && password === 'password') {
+      navigate('/dashboard'); // Redirect to dashboard if credentials are correct
+    } else {
+      alert('Invalid credentials'); // Alert if credentials are incorrect
+    }
   };
 
   return (
