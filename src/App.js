@@ -7,9 +7,11 @@ function App() {
   return (
     <div className="App flex h-screen bg-gradient-to-r from-lavender-pink to-light-cyan">
       <header className="App-header m-auto">
-        <h1>Welcome to Our Platform</h1>
-        <p>
-          Join our community today and explore all the features we offer!
+        <h1 className='font-custom text-wenge'>
+          Welcome to Our Platform
+        </h1>
+        <p className='font-custom text-wenge'>
+          Walk together, anytime.
         </p>
         <div className="button-group flex items-center justify-center">
           <button className="App-button" onClick={() => navigate("/login")}>Login</button>
