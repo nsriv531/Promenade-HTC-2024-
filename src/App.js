@@ -5,8 +5,8 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App flex h-screen bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <header className="App-header m-auto">
         <h1>Welcome to Our Platform</h1>
         <p>
           Join our community today and explore all the features we offer!
