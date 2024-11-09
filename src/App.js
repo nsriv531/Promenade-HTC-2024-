@@ -8,7 +8,7 @@ function App() {
         <p>
           Join our community today and explore all the features we offer!
         </p>
-        <div className="button-group">
+        <div className="button-group flex items-center justify-center">
           <button className="App-button" onClick={() => alert("Redirect to Login")}>Login</button>
           <button className="App-button" onClick={() => alert("Redirect to Sign Up")}>Sign Up</button>
         </div>
