@@ -15,53 +15,47 @@ struct AccountCreationView: View {
     @State var languages: String = ""
     @State var email: String = ""
     @State var profilePicture: String = ""
-    @State var age: Int = 0
+    @State var ageRange: AccountInfo.AgeRange = .range18_24
     @State var genderIdentity: String = ""
-    @State var interests: String = ""
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 32) {
+        VStack(alignment: .leading, spacing: 12) {
             Text("Create Account")
-                .font(.largeTitle.bold())
+                .exposureTitle()
 
-            Text("Please fill out the following information to create your account.")
+            Text("Step into a Promenade.")
+                .interSubheadline()
 
-            VStack(spacing: 4) {
-                HStack(spacing: 4) {
-                    TextField("First Name", text: $firstName)
-                        .modifier(InputModifier())
-
-                    TextField("Pronouns", text: $pronouns)
-                        .modifier(InputModifier())
-                }
-
-                TextField("Email", text: $email)
-                    .modifier(InputModifier())
-
-                TextField("Profile Picture URL", text: $profilePicture)
-                    .modifier(InputModifier())
-
-                HStack {
-                    Text("Age")
-                        .foregroundStyle(.tertiary)
-                    Spacer()
-                    Picker("", selection: $age) {
-                        ForEach(0 ..< 100) { age in
-                            Text("\(age)")
-                        }
-                    }
-                }
+            TextField("First Name", text: $firstName)
                 .modifier(InputModifier())
 
-                TextField("Gender Identity", text: $genderIdentity)
-                    .modifier(InputModifier())
+            TextField("Pronouns", text: $pronouns)
+                .modifier(InputModifier())
 
-                TextField("Languages (separated by commas)", text: $languages)
-                    .modifier(InputModifier())
+            TextField("Email", text: $email)
+                .modifier(InputModifier())
 
-                TextField("Interests (separated by commas)", text: $interests)
-                    .modifier(InputModifier())
+            TextField("Profile Picture URL", text: $profilePicture)
+                .modifier(InputModifier())
+
+            HStack {
+                Text("Age")
+                    .foregroundStyle(.tertiary)
+                Spacer()
+                Picker("", selection: $ageRange) {
+                    ForEach(AccountInfo.AgeRange.allCases) { range in
+                        Text("\(range.name)")
+                            .tag(range)
+                    }
+                }
             }
+            .modifier(InputModifier())
+
+            TextField("Gender Identity", text: $genderIdentity)
+                .modifier(InputModifier())
+
+            TextField("Languages (separated by commas)", text: $languages)
+                .modifier(InputModifier())
 
             Spacer()
 
@@ -72,14 +66,37 @@ struct AccountCreationView: View {
                     languages: languages.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) },
                     email: email,
                     profilePicture: URL(string: profilePicture) ?? URL(string: "https://avatars.githubusercontent.com/u/77025122?v=4")!,
-                    age: age,
+                    ageRange: ageRange,
                     genderIdentity: genderIdentity,
-                    interests: interests.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                    interests: []
                 )
                 model.nextPage()
             }
             .buttonStyle(IntroButtonStyle())
         }
         .padding()
+        .background {
+            MeshGradient(
+                width: 3, height: 3,
+                points: [
+                    [0.0, 0.0], [0.5, 0], [1.0, 0.0],
+                    [0.0, 0.5], [0.6, 0.5], [1.0, 0.5],
+                    [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
+                ],
+                colors: [
+                    .background, .thistle, .orchidPink,
+                    .orchidPink, .thistle, .background,
+                    .lavenderPink, .thistle, .lavenderPink
+                ],
+                smoothsColors: true,
+                colorSpace: .perceptual
+            )
+            .ignoresSafeArea()
+        }
     }
+}
+
+#Preview {
+    AccountCreationView()
+        .environmentObject(AppModel())
 }

@@ -17,17 +17,6 @@ struct ContentView: View {
     }
 }
 
-struct AccountInfo: Codable, Defaults.Serializable {
-    var firstName: String
-    var pronouns: String
-    var languages: [String]
-    var email: String
-    var profilePicture: URL
-    var age: Int
-    var genderIdentity: String
-    var interests: [String]
-}
-
 #Preview {
     AccountCreationView()
         .environmentObject(AppModel())
