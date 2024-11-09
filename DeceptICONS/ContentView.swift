@@ -5,8 +5,8 @@
 //  Created by Kai Azim on 2024-11-09.
 //
 
-import SwiftUI
 import Defaults
+import SwiftUI
 
 struct ContentView: View {
     @StateObject var model = AppModel()

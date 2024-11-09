@@ -36,6 +36,7 @@ struct HomeView: View {
             }
         }
     }
+
     @State var currentTab: Tab = .start
 
     var body: some View {

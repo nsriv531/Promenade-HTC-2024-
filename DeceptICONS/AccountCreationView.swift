@@ -46,7 +46,7 @@ struct AccountCreationView: View {
                         .foregroundStyle(.tertiary)
                     Spacer()
                     Picker("", selection: $age) {
-                        ForEach(0..<100) { age in
+                        ForEach(0 ..< 100) { age in
                             Text("\(age)")
                         }
                     }
