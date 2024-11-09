@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A8979E202CE0089F00749F9A /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = A8979E1F2CE0089F00749F9A /* Defaults */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A8979E092CDFFAE400749F9A /* DeceptICONS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeceptICONS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8979E202CE0089F00749F9A /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = DeceptICONS;
 			packageProductDependencies = (
+				A8979E1F2CE0089F00749F9A /* Defaults */,
 			);
 			productName = DeceptICONS;
 			productReference = A8979E092CDFFAE400749F9A /* DeceptICONS.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = A8979E002CDFFAE400749F9A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A8979E1E2CE0089F00749F9A /* XCRemoteSwiftPackageReference "Defaults" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A8979E0A2CDFFAE400749F9A /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A8979E1E2CE0089F00749F9A /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A8979E1F2CE0089F00749F9A /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8979E1E2CE0089F00749F9A /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A8979E012CDFFAE400749F9A /* Project object */;
 }

@@ -6,19 +6,29 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct ContentView: View {
+    @StateObject var model = AppModel()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        model.currentPage.view()
+            .environmentObject(model)
     }
 }
 
+struct AccountInfo: Codable, Defaults.Serializable {
+    var firstName: String
+    var pronouns: String
+    var languages: [String]
+    var email: String
+    var profilePicture: URL
+    var age: Int
+    var genderIdentity: String
+    var interests: [String]
+}
+
 #Preview {
-    ContentView()
+    AccountCreationView()
+        .environmentObject(AppModel())
 }
