@@ -9,16 +9,22 @@ import SwiftUI
 
 struct IntroWelcomeView: View {
     @EnvironmentObject var model: AppModel
+    @State var showIntro: Bool = false
 
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
             Spacer()
 
-            Text("Promenade")
-                .exposureTitle()
+            Group {
+                Text("Promenade")
+                    .exposureTitle()
 
-            Text("Walk together, anytime.")
-                .interSubheadline()
+                Text("Walk together, anytime.")
+                    .interSubheadline()
+            }
+            .blur(radius: showIntro ? 0 : 10)
+            .opacity(showIntro ? 1 : 0)
+            .offset(y: showIntro ? 0 : 20)
 
             Spacer()
 
@@ -45,6 +51,11 @@ struct IntroWelcomeView: View {
                 colorSpace: .perceptual
             )
             .ignoresSafeArea()
+        }
+        .onAppear {
+            withAnimation(.easeOut(duration: 1.0)) {
+                showIntro = true
+            }
         }
     }
 }

@@ -68,7 +68,8 @@ struct AccountCreationView: View {
                     profilePicture: URL(string: profilePicture) ?? URL(string: "https://avatars.githubusercontent.com/u/77025122?v=4")!,
                     ageRange: ageRange,
                     genderIdentity: genderIdentity,
-                    interests: []
+                    interests: [],
+                    userRating: 5.0
                 )
                 model.nextPage()
             }
