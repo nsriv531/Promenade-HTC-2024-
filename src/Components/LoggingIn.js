@@ -42,7 +42,7 @@ function LoggingIn() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
       { userLoggedIn && (<Navigate to={'/dashboard'} replace={true} />) }
       <form onSubmit={handleSubmit} className="bg-white p-8 max-w-lg mx-auto rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">Login</h2>
@@ -69,6 +69,14 @@ function LoggingIn() {
           />
         </label>
 
+      <button
+        type="submit"
+        className="w-full bg-indigo-600 text-white py-2 rounded-md font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      >
+        Login
+      </button>
+    </form>
+    </div>
         <button
           type="submit"
           className="w-full bg-indigo-600 text-white py-2 rounded-md font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
