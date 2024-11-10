@@ -129,7 +129,6 @@ const SignUp = () => {
       <BackButton /> {/* Add the BackButton here at the top */}
         <h2 className="text-3xl font-bold mb-6 text-center">Create Account</h2>
         <h3 className="text-2xl mb-6 text-center">Step into a Promenade</h3>
-
         {isSubmitted && (
           <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-lg flex items-center">
             <CheckCircle className="mr-2" size={20} />
