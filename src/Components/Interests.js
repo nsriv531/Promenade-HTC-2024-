@@ -36,7 +36,7 @@ const Interests = ({ selectedInterests = [], onInterestsChange }) => {
           onClick={() => handleChipClick(interest)}
           color={selectedInterests.includes(interest) ? "primary" : "default"}
           variant={selectedInterests.includes(interest) ? "filled" : "outlined"}
-          className="cursor-pointer"
+          className="font-inter-medium font-inter text-wenge rounded-xl bg-opacity-45 bg-light-cyan "
         />
       ))}
     </div>
