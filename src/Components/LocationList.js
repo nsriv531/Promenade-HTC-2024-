@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import BackButton from './BackButton';
+import BackButton from "./BackButton";
 
 const LocationList = () => {
   const [filterInput, setFilterInput] = useState("");
@@ -10,12 +10,12 @@ const LocationList = () => {
   const [startLocation, setStartLocation] = useState(null);
   const [endLocation, setEndLocation] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const navigate = useNavigate(); // React Router hook to navigate
+  const navigate = useNavigate();
 
   const handleNavigate = (path) => {
     setIsTransitioning(true);
     setTimeout(() => navigate(path), 1000); // Navigate after animation
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +44,7 @@ const LocationList = () => {
 
   const handleContinue = () => {
     if (startLocation && endLocation) {
-      handleNavigate("/matched-users", { state: { startLocation, endLocation } });
+      navigate("/matched-users", { state: { startLocation, endLocation } });
     }
   };
 
@@ -72,7 +72,9 @@ const LocationList = () => {
         {filteredData.map((data) => (
           <li
             key={data.id}
-            className={`bg-opacity-45 flex items-center justify-between p-2 bg-white rounded border hover:bg-gray-50 ${isTransitioning ? "animate-RslideOut" : "animate-RslideIn"}`}>
+            className={`bg-opacity-45 flex items-center justify-between p-2 bg-white rounded border hover:bg-gray-50 ${
+              isTransitioning ? "animate-RslideOut" : "animate-RslideIn"
+            }`}>
             <span className="font-inter-medium">{data.name}</span>
             <div className="grid grid-rows-2 gap-1">
               <button
@@ -90,8 +92,10 @@ const LocationList = () => {
         ))}
       </ul>
 
-      {/* Display the selected start and end locations */}
-      <div className={`mt-6 p-4 bg-white rounded shadow ${isTransitioning ? "animate-RslideOut" : "animate-RslideIn"}`}>
+      <div
+        className={`mt-6 p-4 bg-white rounded shadow ${
+          isTransitioning ? "animate-RslideOut" : "animate-RslideIn"
+        }`}>
         <h2 className="text-lg font-bold mb-3">Selected Locations</h2>
         {startLocation && (
           <p className="mb-2">
@@ -115,7 +119,6 @@ const LocationList = () => {
         )}
       </div>
 
-      {/* Continue Button */}
       <div className="mt-4">
         <button
           onClick={handleContinue}

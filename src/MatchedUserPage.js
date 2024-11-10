@@ -51,7 +51,7 @@ const MatchedUsersPage = () => {
             <li key={index} className="mb-2">
               <strong>User:</strong> {user.firstName} <br />
               <strong>Starting Location:</strong> {startLocation.name} <br />
-              <strong>Random End Location:</strong> {user.endLocation}
+              <strong>End Location:</strong> {user.endLocation}
             </li>
           ))}
         </ul>
