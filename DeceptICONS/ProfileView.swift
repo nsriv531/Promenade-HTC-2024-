@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var firebase: FirebaseManager = .shared
-    @State var profile: User = FirebaseManager.shared.account!
+    @State var profile: User
 
     var body: some View {
         NavigationView {
@@ -101,6 +101,13 @@ struct ProfileView: View {
                     Button("Save") {
                         Task {
                             await firebase.updateMyAccount(to: profile)
+                        }
+                    }
+                    .buttonStyle(IntroButtonStyle())
+
+                    Button("Sign Out") {
+                        Task {
+                            try? await firebase.logout()
                         }
                     }
                     .buttonStyle(IntroButtonStyle())

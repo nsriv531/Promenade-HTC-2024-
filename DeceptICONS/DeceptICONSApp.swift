@@ -13,17 +13,9 @@ struct DeceptICONSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onOpenURL { url in
+                    GIDSignIn.sharedInstance.handle(url)
+                }
         }
-    }
-}
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-    // Handle Google Sign In
-    func application(
-        _ app: UIApplication,
-        open url: URL,
-        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
-    ) -> Bool {
-        GIDSignIn.sharedInstance.handle(url)
     }
 }

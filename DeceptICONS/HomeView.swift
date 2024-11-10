@@ -26,13 +26,15 @@ struct HomeView: View {
             }
         }
 
-        @ViewBuilder
+        @MainActor @ViewBuilder
         func view() -> some View {
             switch self {
             case .promenade:
                 LocationChooserView()
             case .profile:
-                ProfileView()
+                if let user = FirebaseManager.shared.account {
+                    ProfileView(profile: user)
+                }
             }
         }
     }

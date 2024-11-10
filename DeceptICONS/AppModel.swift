@@ -10,6 +10,9 @@ import SwiftUI
 
 @MainActor
 class AppModel: ObservableObject {
+    static let shared = AppModel()
+    private init() {}
+
     @Published var currentPage: AppPage = .welcome
 
     func nextPage() {

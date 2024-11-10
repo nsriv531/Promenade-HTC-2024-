@@ -70,8 +70,3 @@ struct Trapezoid: Shape {
         return path
     }
 }
-
-#Preview {
-    IntroWelcomeView()
-        .environmentObject(AppModel())
-}

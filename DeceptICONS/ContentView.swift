@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var firebase: FirebaseManager = .shared
-    @StateObject var model = AppModel()
+    @ObservedObject var model: AppModel = .shared
 
     var body: some View {
         model.currentPage.view()

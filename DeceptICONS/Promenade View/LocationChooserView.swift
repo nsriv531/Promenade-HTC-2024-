@@ -25,7 +25,7 @@ struct LocationChooserView: View {
                         Text("Promenade...")
                             .exposureFont()
 
-                        Text("Start a new adventure.")
+                        Text("Plan your route.")
                             .interFont()
                     }
 

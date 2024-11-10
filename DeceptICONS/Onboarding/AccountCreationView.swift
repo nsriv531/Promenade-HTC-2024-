@@ -37,6 +37,14 @@ struct AccountCreationView: View {
                 }
             }
             .buttonStyle(IntroButtonStyle())
+
+            Button("Sign in with Google") {
+                Task {
+                    try? await firebaseManager.googleOauth()
+                    model.nextPage()
+                }
+            }
+            .buttonStyle(IntroButtonStyle())
         }
         .padding()
         .modifier(BackgroundMeshModifier())
@@ -115,9 +123,4 @@ struct AccountInfoView: View {
         .padding()
         .modifier(BackgroundMeshModifier())
     }
-}
-
-#Preview {
-    AccountCreationView()
-        .environmentObject(AppModel())
 }

@@ -60,7 +60,7 @@ struct InterestSelectionView: View {
                             user.interests = interests
                             await firebaseManager.updateMyAccount(to: user)
                         }
-                        
+
                         model.nextPage()
                     }
                 }
@@ -70,9 +70,4 @@ struct InterestSelectionView: View {
         .padding()
         .modifier(BackgroundMeshModifier())
     }
-}
-
-#Preview {
-    InterestSelectionView()
-        .environmentObject(AppModel())
 }

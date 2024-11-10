@@ -215,6 +215,56 @@ extension FirebaseManager {
 extension FirebaseManager {
     func signUpWithEmail(_ email: String, password: String) async {
         _ = try? await auth.createUser(withEmail: email, password: password)
+
+        // If account exists, set account to the account entry
+        if let acc = users.first(where: { $0.email == email }) {
+            account = acc
+            AppModel.shared.currentPage = .interests
+        }
+    }
+
+    func googleOauth() async throws {
+        // google sign in
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            return
+        }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+
+        //get rootView
+        let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        guard let rootViewController = scene?.windows.first?.rootViewController else {
+            return
+        }
+
+        //google sign in authentication response
+        let result = try await GIDSignIn.sharedInstance.signIn(
+            withPresenting: rootViewController
+        )
+
+        let user = result.user
+        guard let idToken = user.idToken?.tokenString else {
+           return
+        }
+
+        //Firebase auth
+        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
+        try await auth.signIn(with: credential)
+
+        // If account exists, set account to the account entry
+        if let acc = users.first(where: { $0.email == auth.currentUser?.email }) {
+            account = acc
+            AppModel.shared.currentPage = .interests
+        }
+    }
+
+    func logout() async throws {
+        GIDSignIn.sharedInstance.signOut()
+        try auth.signOut()
+        account = nil
+        AppModel.shared.currentPage = .welcome
     }
 
     var currentUserEmail: String? { auth.currentUser?.email }
@@ -224,6 +274,8 @@ extension FirebaseManager {
         _ = try? reference.addDocument(from: user)
         await fetchAccount()
     }
+
+    // Changing the user's account
 
     func updateMyAccount(to user: User) async {
         guard
