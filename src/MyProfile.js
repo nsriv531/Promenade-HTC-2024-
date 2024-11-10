@@ -54,7 +54,7 @@ const MyProfile = () => {
             <li key={index}>{interest}</li>
           ))}
         </ul>
-        <button onClick={handleSignOut} onClick={() => navigate("/")}>Sign Out</button>
+        <button onClick={() => {handleSignOut(); navigate("/");}}>Sign Out</button>
       </div>
     </div>
   );
