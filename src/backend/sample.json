@@ -1,92 +1,252 @@
 [
   {
-    "genderIdentity" : "Female",
-    "languages" : [
-      "English",
-      "French"
-    ],
-    "ageRange" : "range25_29",
-    "userRating" : 4.5,
-    "email" : "emma.green@gmail.com",
-    "pronouns" : "she\/her",
     "interests" : [
       "natureAndOutdoors",
       "photography",
       "travel",
       "environmentalIssues"
     ],
+    "pronouns" : "she\/her",
     "profilePicture" : "https:\/\/example.com\/emma_green.jpg",
-    "firstName" : "Emma"
-  },
-  {
-    "email" : "alex.rivera@gmail.com",
-    "pronouns" : "they\/them",
-    "ageRange" : "range35Plus",
-    "profilePicture" : "https:\/\/example.com\/alex_rivera.jpg",
+    "genderIdentity" : "Female",
+    "preferredLocations" : [
+      {
+        "name" : "Shouldice Park"
+      },
+      {
+        "name" : "69 Street Station"
+      },
+      {
+        "name" : "Elliston Park"
+      },
+      {
+        "name" : "Tom Campbell's Hill"
+      },
+      {
+        "name" : "Shawnessy Station"
+      },
+      {
+        "name" : "River Park"
+      },
+      {
+        "name" : "Somerset-Bridlewood Station"
+      },
+      {
+        "name" : "Erlton\/Stampede Station"
+      },
+      {
+        "name" : "Shaganappi Point Station"
+      },
+      {
+        "name" : "Brentwood Station"
+      }
+    ],
+    "ageRange" : 1,
+    "firstName" : "Emma",
+    "userRating" : 4.5,
     "languages" : [
       "English",
-      "Spanish"
+      "French"
     ],
-    "genderIdentity" : "Non-binary",
+    "email" : "emma.green@gmail.com"
+  },
+  {
+    "ageRange" : 3,
+    "pronouns" : "they\/them",
+    "preferredLocations" : [
+      {
+        "name" : "Tom Campbell's Hill"
+      },
+      {
+        "name" : "Fish Creek-Lacombe Station"
+      },
+      {
+        "name" : "Century Gardens"
+      },
+      {
+        "name" : "Edworthy Park"
+      },
+      {
+        "name" : "和園 Harmony Park"
+      },
+      {
+        "name" : "Inglewood Bird Sanctuary"
+      },
+      {
+        "name" : "J.H. Woods Park"
+      },
+      {
+        "name" : "Douglas Fir Trail"
+      },
+      {
+        "name" : "Sunnyside Station"
+      },
+      {
+        "name" : "North Glenmore Park"
+      }
+    ],
     "interests" : [
       "artAndDesign",
       "music",
       "localCommunityEvents",
       "foodAndCooking"
     ],
-    "userRating" : 3.1,
-    "firstName" : "Alex"
+    "languages" : [
+      "English",
+      "Spanish"
+    ],
+    "profilePicture" : "https:\/\/example.com\/alex_rivera.jpg",
+    "firstName" : "Alex",
+    "email" : "alex.rivera@gmail.com",
+    "genderIdentity" : "Non-binary",
+    "userRating" : 3.1
   },
   {
-    "genderIdentity" : "Male",
-    "firstName" : "Liam",
-    "languages" : [
-      "English"
-    ],
-    "pronouns" : "he\/him",
-    "profilePicture" : "https:\/\/example.com\/liam_smith.jpg",
-    "email" : "liam.smith@gmail.com",
+    "ageRange" : 0,
+    "userRating" : 4,
     "interests" : [
       "sports",
       "fitnessAndExercise",
       "technology",
       "careerAndProfessionalDevelopment"
     ],
-    "userRating" : 4,
-    "ageRange" : "range18_24"
+    "pronouns" : "he\/him",
+    "firstName" : "Liam",
+    "profilePicture" : "https:\/\/example.com\/liam_smith.jpg",
+    "languages" : [
+      "English"
+    ],
+    "genderIdentity" : "Male",
+    "preferredLocations" : [
+      {
+        "name" : "Mills Park"
+      },
+      {
+        "name" : "Southland Station"
+      },
+      {
+        "name" : "Inglewood Bird Sanctuary"
+      },
+      {
+        "name" : "Brentwood Station"
+      },
+      {
+        "name" : "Canyon Meadows Station"
+      },
+      {
+        "name" : "Carburn Park"
+      },
+      {
+        "name" : "Barlow\/Max Bell Station"
+      },
+      {
+        "name" : "Confederation Park"
+      },
+      {
+        "name" : "Banff Trail Station"
+      },
+      {
+        "name" : "Elliston Park"
+      }
+    ],
+    "email" : "liam.smith@gmail.com"
   },
   {
-    "firstName" : "Sophia",
+    "pronouns" : "she\/her",
+    "genderIdentity" : "Female",
     "languages" : [
       "English",
       "Mandarin"
     ],
-    "profilePicture" : "https:\/\/example.com\/sophia_chen.jpg",
-    "genderIdentity" : "Female",
-    "ageRange" : "range25_29",
     "interests" : [
       "booksAndLiterature",
       "moviesAndTVShows",
       "travel",
       "artAndDesign"
     ],
+    "profilePicture" : "https:\/\/example.com\/sophia_chen.jpg",
+    "userRating" : 4.1,
+    "ageRange" : 1,
     "email" : "sophia.chen@gmail.com",
-    "pronouns" : "she\/her",
-    "userRating" : 4.1
+    "firstName" : "Sophia",
+    "preferredLocations" : [
+      {
+        "name" : "Munro Park"
+      },
+      {
+        "name" : "Bow to Bluff"
+      },
+      {
+        "name" : "Bowness Park"
+      },
+      {
+        "name" : "Crowfoot Station"
+      },
+      {
+        "name" : "4 Street SW Station"
+      },
+      {
+        "name" : "Eau Claire Plaza"
+      },
+      {
+        "name" : "Beaverdam Flats"
+      },
+      {
+        "name" : "Kingsland Summer Park"
+      },
+      {
+        "name" : "Sunalta Station"
+      },
+      {
+        "name" : "Big Marlborough Park"
+      }
+    ]
   },
   {
     "profilePicture" : "https:\/\/example.com\/noah_mueller.jpg",
+    "ageRange" : 3,
+    "firstName" : "Noah",
     "genderIdentity" : "Male",
-    "userRating" : 4.8,
-    "email" : "noah.mueller@gmail.com",
     "interests" : [
       "technology",
       "environmentalIssues",
       "photography",
       "localCommunityEvents"
     ],
-    "firstName" : "Noah",
-    "ageRange" : "range35Plus",
+    "userRating" : 4.8,
+    "preferredLocations" : [
+      {
+        "name" : "Victoria Park\/Stampede Station"
+      },
+      {
+        "name" : "Barb Scott Park"
+      },
+      {
+        "name" : "Haskayne Legacy Park"
+      },
+      {
+        "name" : "Crowfoot Station"
+      },
+      {
+        "name" : "Bottomlands Park"
+      },
+      {
+        "name" : "River Park"
+      },
+      {
+        "name" : "City Hall\/Bow Valley College Station"
+      },
+      {
+        "name" : "Tomkins Park"
+      },
+      {
+        "name" : "Rouleauville Square"
+      },
+      {
+        "name" : "Poppy Plaza"
+      }
+    ],
+    "email" : "noah.mueller@gmail.com",
     "pronouns" : "he\/him",
     "languages" : [
       "English",
@@ -94,179 +254,502 @@
     ]
   },
   {
+    "email" : "olivia.rossi@email.com",
+    "languages" : [
+      "English",
+      "Italian"
+    ],
     "genderIdentity" : "Female",
-    "firstName" : "Olivia",
-    "profilePicture" : "https:\/\/example.com\/olivia_rossi.jpg",
-    "pronouns" : "she\/her",
-    "userRating" : 3.9,
     "interests" : [
       "foodAndCooking",
       "travel",
       "artAndDesign",
       "music"
     ],
-    "ageRange" : "range25_29",
-    "languages" : [
-      "English",
-      "Italian"
+    "userRating" : 3.9,
+    "preferredLocations" : [
+      {
+        "name" : "Confederation Park"
+      },
+      {
+        "name" : "Anderson Station"
+      },
+      {
+        "name" : "Humpy Hollow"
+      },
+      {
+        "name" : "69 Street Station"
+      },
+      {
+        "name" : "Brentwood Station"
+      },
+      {
+        "name" : "City Hall\/Bow Valley College Station"
+      },
+      {
+        "name" : "Douglas Fir Trail"
+      },
+      {
+        "name" : "Tomkins Park"
+      },
+      {
+        "name" : "Saddletowne Station"
+      },
+      {
+        "name" : "Pearce Estate Park"
+      }
     ],
-    "email" : "olivia.rossi@email.com"
+    "pronouns" : "she\/her",
+    "ageRange" : 1,
+    "firstName" : "Olivia",
+    "profilePicture" : "https:\/\/example.com\/olivia_rossi.jpg"
   },
   {
-    "pronouns" : "he\/him",
-    "ageRange" : "range18_24",
-    "profilePicture" : "https:\/\/example.com\/ethan_tanaka.jpg",
-    "userRating" : 4.4,
-    "firstName" : "Ethan",
-    "email" : "ethan.tanaka@email.com",
+    "genderIdentity" : "Male",
     "interests" : [
       "technology",
       "moviesAndTVShows",
       "sports",
       "booksAndLiterature"
     ],
-    "genderIdentity" : "Male",
+    "pronouns" : "he\/him",
     "languages" : [
       "English",
       "Japanese"
+    ],
+    "ageRange" : 0,
+    "email" : "ethan.tanaka@email.com",
+    "userRating" : 4.4,
+    "profilePicture" : "https:\/\/example.com\/ethan_tanaka.jpg",
+    "firstName" : "Ethan",
+    "preferredLocations" : [
+      {
+        "name" : "45 Street Station"
+      },
+      {
+        "name" : "Bow to Bluff"
+      },
+      {
+        "name" : "Century Gardens"
+      },
+      {
+        "name" : "Bridgeland-Memorial Station"
+      },
+      {
+        "name" : "Franklin Station"
+      },
+      {
+        "name" : "Humpy Hollow"
+      },
+      {
+        "name" : "Bowmont Park"
+      },
+      {
+        "name" : "Griffith Woods"
+      },
+      {
+        "name" : "Downtown West-Kerby Station"
+      },
+      {
+        "name" : "Baker Park"
+      }
     ]
   },
   {
-    "email" : "ava.hassan@email.com",
-    "pronouns" : "she\/her",
-    "profilePicture" : "https:\/\/example.com\/ava_hassan.jpg",
-    "genderIdentity" : "Female",
     "interests" : [
       "careerAndProfessionalDevelopment",
       "environmentalIssues",
       "localCommunityEvents",
       "fitnessAndExercise"
     ],
-    "ageRange" : "range35Plus",
     "firstName" : "Ava",
-    "userRating" : 4.9,
     "languages" : [
       "English",
       "Arabic"
-    ]
+    ],
+    "ageRange" : 3,
+    "genderIdentity" : "Female",
+    "preferredLocations" : [
+      {
+        "name" : "Douglas Fir Trail"
+      },
+      {
+        "name" : "Dale Hodges Park"
+      },
+      {
+        "name" : "Heritage Station"
+      },
+      {
+        "name" : "Shawnessy Station"
+      },
+      {
+        "name" : "Crowfoot Station"
+      },
+      {
+        "name" : "12 Mile Coulee"
+      },
+      {
+        "name" : "69 Street Station"
+      },
+      {
+        "name" : "Elliston Park"
+      },
+      {
+        "name" : "North Glenmore Park"
+      },
+      {
+        "name" : "Sirocco Station"
+      }
+    ],
+    "profilePicture" : "https:\/\/example.com\/ava_hassan.jpg",
+    "email" : "ava.hassan@email.com",
+    "userRating" : 4.9,
+    "pronouns" : "she\/her"
   },
   {
-    "firstName" : "Lucas",
-    "profilePicture" : "https:\/\/example.com\/lucas_silva.jpg",
     "email" : "lucas.silva@email.com",
-    "ageRange" : "range25_29",
-    "pronouns" : "he\/him",
-    "userRating" : 1.2,
     "genderIdentity" : "Male",
+    "pronouns" : "he\/him",
+    "firstName" : "Lucas",
+    "userRating" : 1.2,
+    "profilePicture" : "https:\/\/example.com\/lucas_silva.jpg",
+    "languages" : [
+      "English",
+      "Portuguese"
+    ],
+    "ageRange" : 1,
     "interests" : [
       "sports",
       "music",
       "travel",
       "foodAndCooking"
     ],
-    "languages" : [
-      "English",
-      "Portuguese"
+    "preferredLocations" : [
+      {
+        "name" : "Weaselhead Flats"
+      },
+      {
+        "name" : "Reader Rock Garden"
+      },
+      {
+        "name" : "Chinook Station"
+      },
+      {
+        "name" : "和園 Harmony Park"
+      },
+      {
+        "name" : "Stanley Park"
+      },
+      {
+        "name" : "Devonian Gardens"
+      },
+      {
+        "name" : "Kingsland Summer Park"
+      },
+      {
+        "name" : "Lions Park Station"
+      },
+      {
+        "name" : "39 Avenue Station"
+      },
+      {
+        "name" : "Strathcona Ravines"
+      }
     ]
   },
   {
+    "languages" : [
+      "English",
+      "Korean"
+    ],
+    "preferredLocations" : [
+      {
+        "name" : "Cowboys Park"
+      },
+      {
+        "name" : "Sue Higgins Park"
+      },
+      {
+        "name" : "Saddletowne Station"
+      },
+      {
+        "name" : "Old Refinery Park"
+      },
+      {
+        "name" : "和園 Harmony Park"
+      },
+      {
+        "name" : "Confederation Park"
+      },
+      {
+        "name" : "Lindsay Park"
+      },
+      {
+        "name" : "Olympic Plaza"
+      },
+      {
+        "name" : "12 Mile Coulee"
+      },
+      {
+        "name" : "Riley Park"
+      }
+    ],
     "email" : "mia.park@email.com",
-    "pronouns" : "she\/her",
+    "firstName" : "Mia",
+    "userRating" : 5,
     "genderIdentity" : "Female",
+    "ageRange" : 0,
+    "pronouns" : "she\/her",
     "interests" : [
       "photography",
       "artAndDesign",
       "technology",
       "booksAndLiterature"
     ],
-    "profilePicture" : "https:\/\/example.com\/mia_park.jpg",
-    "ageRange" : "range18_24",
-    "firstName" : "Mia",
-    "languages" : [
-      "English",
-      "Korean"
-    ],
-    "userRating" : 5
+    "profilePicture" : "https:\/\/example.com\/mia_park.jpg"
   },
   {
-    "languages" : [
-      "English"
-    ],
-    "profilePicture" : "https:\/\/example.com\/jackson_brown.jpg",
-    "ageRange" : "range35Plus",
-    "email" : "jackson.brown@email.com",
     "genderIdentity" : "Male",
+    "ageRange" : 3,
+    "firstName" : "Jackson",
+    "profilePicture" : "https:\/\/example.com\/jackson_brown.jpg",
     "interests" : [
       "fitnessAndExercise",
       "natureAndOutdoors",
       "careerAndProfessionalDevelopment",
       "technology"
     ],
+    "email" : "jackson.brown@email.com",
     "pronouns" : "he\/him",
-    "firstName" : "Jackson",
-    "userRating" : 4.3
+    "userRating" : 4.3,
+    "preferredLocations" : [
+      {
+        "name" : "West Confederation Park"
+      },
+      {
+        "name" : "Brentwood Station"
+      },
+      {
+        "name" : "Ranchlands Park"
+      },
+      {
+        "name" : "Bowness Park"
+      },
+      {
+        "name" : "7 Street SW Station"
+      },
+      {
+        "name" : "Westbrook Station"
+      },
+      {
+        "name" : "Connaught Park"
+      },
+      {
+        "name" : "Valleyview Park"
+      },
+      {
+        "name" : "Erlton\/Stampede Station"
+      },
+      {
+        "name" : "SAIT\/AUArts\/Jubilee Station"
+      }
+    ],
+    "languages" : [
+      "English"
+    ]
   },
   {
+    "firstName" : "Zoe",
     "pronouns" : "she\/her",
-    "profilePicture" : "https:\/\/example.com\/zoe_dubois.jpg",
-    "ageRange" : "range25_29",
+    "genderIdentity" : "Female",
+    "languages" : [
+      "English",
+      "French",
+      "Spanish"
+    ],
+    "ageRange" : 1,
     "email" : "zoe.dubois@email.com",
+    "userRating" : 4.9,
+    "profilePicture" : "https:\/\/example.com\/zoe_dubois.jpg",
     "interests" : [
       "travel",
       "environmentalIssues",
       "localCommunityEvents",
       "booksAndLiterature"
     ],
-    "languages" : [
-      "English",
-      "French",
-      "Spanish"
-    ],
-    "firstName" : "Zoe",
-    "userRating" : 4.9,
-    "genderIdentity" : "Female"
+    "preferredLocations" : [
+      {
+        "name" : "Sien Lok Park"
+      },
+      {
+        "name" : "Dale Hodges Park"
+      },
+      {
+        "name" : "Poppy Plaza"
+      },
+      {
+        "name" : "和園 Harmony Park"
+      },
+      {
+        "name" : "Anderson Station"
+      },
+      {
+        "name" : "Bowmont Park"
+      },
+      {
+        "name" : "Olympic Plaza"
+      },
+      {
+        "name" : "Douglas Fir Trail"
+      },
+      {
+        "name" : "Sue Higgins Park"
+      },
+      {
+        "name" : "Ranchlands Park"
+      }
+    ]
   },
   {
-    "ageRange" : "range18_24",
-    "email" : "mason.zhang@email.com",
-    "genderIdentity" : "Male",
     "interests" : [
       "technology",
       "sports",
       "moviesAndTVShows",
       "foodAndCooking"
     ],
+    "profilePicture" : "https:\/\/example.com\/mason_zhang.jpg",
+    "firstName" : "Mason",
+    "ageRange" : 0,
+    "userRating" : 3.2,
+    "genderIdentity" : "Male",
+    "preferredLocations" : [
+      {
+        "name" : "Fish Creek-Lacombe Station"
+      },
+      {
+        "name" : "Heritage Station"
+      },
+      {
+        "name" : "Lindsay Park"
+      },
+      {
+        "name" : "West Nose Creek"
+      },
+      {
+        "name" : "Sandy Beach"
+      },
+      {
+        "name" : "Rundle Station"
+      },
+      {
+        "name" : "Canyon Meadows Station"
+      },
+      {
+        "name" : "39 Avenue Station"
+      },
+      {
+        "name" : "Erlton\/Stampede Station"
+      },
+      {
+        "name" : "Crescent Park"
+      }
+    ],
+    "pronouns" : "he\/him",
+    "email" : "mason.zhang@email.com",
     "languages" : [
       "English",
       "Mandarin"
-    ],
-    "pronouns" : "he\/him",
-    "userRating" : 3.2,
-    "profilePicture" : "https:\/\/example.com\/mason_zhang.jpg",
-    "firstName" : "Mason"
+    ]
   },
   {
-    "pronouns" : "she\/her",
-    "languages" : [
-      "English",
-      "Swedish"
-    ],
-    "userRating" : 3.8,
-    "genderIdentity" : "Female",
     "profilePicture" : "https:\/\/example.com\/harper_andersson.jpg",
-    "email" : "harper.andersson@email.com",
-    "ageRange" : "range25_29",
     "interests" : [
       "natureAndOutdoors",
       "photography",
       "artAndDesign",
       "environmentalIssues"
     ],
-    "firstName" : "Harper"
+    "email" : "harper.andersson@email.com",
+    "genderIdentity" : "Female",
+    "languages" : [
+      "English",
+      "Swedish"
+    ],
+    "preferredLocations" : [
+      {
+        "name" : "Clearwater Park"
+      },
+      {
+        "name" : "Barb Scott Park"
+      },
+      {
+        "name" : "Marlborough Station"
+      },
+      {
+        "name" : "River Park"
+      },
+      {
+        "name" : "Olympic Plaza"
+      },
+      {
+        "name" : "Nat Christie Park"
+      },
+      {
+        "name" : "Weaselhead Flats"
+      },
+      {
+        "name" : "Old Refinery Park"
+      },
+      {
+        "name" : "Nose Hill Park"
+      },
+      {
+        "name" : "Bowmont Park"
+      }
+    ],
+    "firstName" : "Harper",
+    "ageRange" : 1,
+    "pronouns" : "she\/her",
+    "userRating" : 3.8
   },
   {
+    "preferredLocations" : [
+      {
+        "name" : "Battalion Park"
+      },
+      {
+        "name" : "Bow to Bluff"
+      },
+      {
+        "name" : "Sirocco Station"
+      },
+      {
+        "name" : "Beaverdam Flats"
+      },
+      {
+        "name" : "Lawrey Gardens"
+      },
+      {
+        "name" : "Ranchlands Park"
+      },
+      {
+        "name" : "Tuscany Station"
+      },
+      {
+        "name" : "Rundle Station"
+      },
+      {
+        "name" : "Pearce Estate Park"
+      },
+      {
+        "name" : "SAIT\/AUArts\/Jubilee Station"
+      }
+    ],
+    "ageRange" : 3,
+    "pronouns" : "he\/him",
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
     "firstName" : "Leo",
-    "genderIdentity" : "Male",
+    "email" : "leo.ivanov@email.com",
     "interests" : [
       "music",
       "careerAndProfessionalDevelopment",
@@ -277,17 +760,11 @@
       "English",
       "Russian"
     ],
-    "ageRange" : "range35Plus",
-    "pronouns" : "he\/him",
     "userRating" : 4.2,
-    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
-    "email" : "leo.ivanov@email.com"
+    "genderIdentity" : "Male"
   },
   {
-    "userRating" : 1.1,
-    "genderIdentity" : "Male",
-    "firstName" : "Nikhil",
-    "email" : "nsriv531@mtroyal.ca",
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
     "interests" : [
       "music",
       "careerAndProfessionalDevelopment",
@@ -298,29 +775,101 @@
       "English",
       "Gujarati"
     ],
+    "genderIdentity" : "Male",
+    "userRating" : 1.1,
+    "firstName" : "Nikhil",
+    "ageRange" : 3,
+    "email" : "nsriv531@mtroyal.ca",
     "pronouns" : "he\/him",
-    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
-    "ageRange" : "range35Plus"
+    "preferredLocations" : [
+      {
+        "name" : "Bowmont Park"
+      },
+      {
+        "name" : "6 Street SW Station"
+      },
+      {
+        "name" : "Crowfoot Station"
+      },
+      {
+        "name" : "Tom Campbell's Hill"
+      },
+      {
+        "name" : "Barlow\/Max Bell Station"
+      },
+      {
+        "name" : "69 Street Station"
+      },
+      {
+        "name" : "Martindale Station"
+      },
+      {
+        "name" : "Baker Park"
+      },
+      {
+        "name" : "Bridgeland-Memorial Station"
+      },
+      {
+        "name" : "Ranchlands Park"
+      }
+    ]
   },
   {
-    "ageRange" : "range18_24",
-    "email" : "shotasushi@gmail.com",
+    "preferredLocations" : [
+      {
+        "name" : "Beaulieu Gardens"
+      },
+      {
+        "name" : "Victoria Park\/Stampede Station"
+      },
+      {
+        "name" : "Dalhousie Station"
+      },
+      {
+        "name" : "Fish Creek-Lacombe Station"
+      },
+      {
+        "name" : "Riley Park"
+      },
+      {
+        "name" : "J.H. Woods Park"
+      },
+      {
+        "name" : "Chinook Station"
+      },
+      {
+        "name" : "Shouldice Park"
+      },
+      {
+        "name" : "Clearwater Park"
+      },
+      {
+        "name" : "1 Street SW Station"
+      }
+    ],
     "languages" : [
       "English",
       "Japanese"
     ],
+    "pronouns" : "he\/him",
+    "genderIdentity" : "Male",
     "interests" : [
       "careerAndProfessionalDevelopment",
       "technology",
       "artAndDesign"
     ],
-    "userRating" : 4.8,
+    "profilePicture" : "https:\/\/github.com\/mrkai77.png?size=200",
+    "email" : "shotasushi@gmail.com",
     "firstName" : "kai",
-    "pronouns" : "he\/him",
-    "genderIdentity" : "Male",
-    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg"
+    "userRating" : 4.8,
+    "ageRange" : 0
   },
   {
+    "firstName" : "Dara",
+    "email" : "dara@gmail.com",
+    "pronouns" : "she\/her",
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
+    "ageRange" : 0,
     "genderIdentity" : "Female",
     "interests" : [
       "music",
@@ -328,41 +877,96 @@
       "technology",
       "artAndDesign"
     ],
-    "userRating" : 5,
-    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
-    "ageRange" : "range18_24",
-    "firstName" : "Dara",
+    "preferredLocations" : [
+      {
+        "name" : "City Hall\/Bow Valley College Station"
+      },
+      {
+        "name" : "Century Gardens"
+      },
+      {
+        "name" : "Canyon Meadows Station"
+      },
+      {
+        "name" : "Shaganappi Point Station"
+      },
+      {
+        "name" : "Heritage Station"
+      },
+      {
+        "name" : "Peace Park"
+      },
+      {
+        "name" : "J.H. Woods Park"
+      },
+      {
+        "name" : "Tom Campbell's Hill"
+      },
+      {
+        "name" : "Thomson Family Park"
+      },
+      {
+        "name" : "Franklin Station"
+      }
+    ],
     "languages" : [
       "English"
     ],
-    "email" : "dara@gmail.com",
-    "pronouns" : "she\/her"
+    "userRating" : 5
   },
   {
+    "ageRange" : 0,
+    "pronouns" : "he\/him",
+    "userRating" : 4.5,
+    "firstName" : "Jaunie",
+    "preferredLocations" : [
+      {
+        "name" : "Marlborough Station"
+      },
+      {
+        "name" : "Haultain Park"
+      },
+      {
+        "name" : "Cowboys Park"
+      },
+      {
+        "name" : "Shouldice Park"
+      },
+      {
+        "name" : "Rotary Park"
+      },
+      {
+        "name" : "Prince's Island Park"
+      },
+      {
+        "name" : "Ralph Klein Park"
+      },
+      {
+        "name" : "Banff Trail Station"
+      },
+      {
+        "name" : "Devonian Gardens"
+      },
+      {
+        "name" : "Somerset-Bridlewood Station"
+      }
+    ],
     "interests" : [
       "careerAndProfessionalDevelopment",
       "technology",
       "artAndDesign"
     ],
-    "email" : "jaunie@gmail.com",
+    "genderIdentity" : "Male",
     "languages" : [
       "English",
       "French"
     ],
-    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
-    "pronouns" : "he\/him",
-    "genderIdentity" : "Male",
-    "userRating" : 4.5,
-    "firstName" : "Jaunie",
-    "ageRange" : "range18_24"
+    "email" : "jaunie@gmail.com",
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg"
   },
   {
-    "languages" : [
-      "English",
-      "French",
-      "Japanese",
-      "Latin"
-    ],
+    "ageRange" : 0,
+    "genderIdentity" : "Male",
     "email" : "adly.ryo.azim@gmail.com",
     "interests" : [
       "careerAndProfessionalDevelopment",
@@ -370,10 +974,558 @@
       "artAndDesign"
     ],
     "userRating" : 3.8,
+    "languages" : [
+      "English",
+      "French",
+      "Japanese",
+      "Latin"
+    ],
+    "preferredLocations" : [
+      {
+        "name" : "Reader Rock Garden"
+      },
+      {
+        "name" : "Barlow\/Max Bell Station"
+      },
+      {
+        "name" : "Rouleauville Square"
+      },
+      {
+        "name" : "Laycock Park"
+      },
+      {
+        "name" : "39 Avenue Station"
+      },
+      {
+        "name" : "Heritage Station"
+      },
+      {
+        "name" : "Rundle Station"
+      },
+      {
+        "name" : "Ranchlands Park"
+      },
+      {
+        "name" : "Kingsland Summer Park"
+      },
+      {
+        "name" : "SAIT\/AUArts\/Jubilee Station"
+      }
+    ],
+    "pronouns" : "he\/him",
     "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
+    "firstName" : "Adly"
+  },
+  {
+    "languages" : [
+      "English",
+      "Arabic"
+    ],
+    "genderIdentity" : "Female",
+    "ageRange" : 1,
+    "interests" : [
+      "travel",
+      "foodAndCooking",
+      "photography",
+      "localCommunityEvents"
+    ],
+    "preferredLocations" : [
+      {
+        "name" : "J.H. Woods Park"
+      },
+      {
+        "name" : "South Glenmore Park"
+      },
+      {
+        "name" : "Clearwater Park"
+      },
+      {
+        "name" : "West Nose Creek"
+      },
+      {
+        "name" : "Lois Szabo Commons"
+      },
+      {
+        "name" : "Baker Park"
+      },
+      {
+        "name" : "Ralph Klein Park"
+      },
+      {
+        "name" : "8 Street SW Station"
+      },
+      {
+        "name" : "Douglas Fir Trail"
+      },
+      {
+        "name" : "Bowmont Park"
+      }
+    ],
+    "pronouns" : "she\/her",
+    "email" : "amira.hassan@email.com",
+    "userRating" : 4.7,
+    "firstName" : "Amira",
+    "profilePicture" : "https:\/\/example.com\/amira_hassan.jpg"
+  },
+  {
+    "profilePicture" : "https:\/\/example.com\/chen_wei.jpg",
+    "languages" : [
+      "English",
+      "Mandarin"
+    ],
+    "preferredLocations" : [
+      {
+        "name" : "Edworthy Park"
+      },
+      {
+        "name" : "Erlton\/Stampede Station"
+      },
+      {
+        "name" : "Shaganappi Point Station"
+      },
+      {
+        "name" : "Valleyview Park"
+      },
+      {
+        "name" : "Fish Creek-Lacombe Station"
+      },
+      {
+        "name" : "Griffith Woods"
+      },
+      {
+        "name" : "Dalhousie Station"
+      },
+      {
+        "name" : "Jack Long Park"
+      },
+      {
+        "name" : "University Station"
+      },
+      {
+        "name" : "69 Street Station"
+      }
+    ],
+    "email" : "chen.wei@email.com",
+    "firstName" : "Chen",
     "genderIdentity" : "Male",
-    "ageRange" : "range18_24",
-    "firstName" : "Adly",
-    "pronouns" : "he\/him"
+    "userRating" : 4.3,
+    "ageRange" : 2,
+    "pronouns" : "he\/him",
+    "interests" : [
+      "technology",
+      "fitnessAndExercise",
+      "environmentalIssues",
+      "booksAndLiterature"
+    ]
+  },
+  {
+    "pronouns" : "she\/her",
+    "languages" : [
+      "English",
+      "Urdu"
+    ],
+    "email" : "zara.malik@email.com",
+    "genderIdentity" : "Female",
+    "interests" : [
+      "artAndDesign",
+      "travel",
+      "photography"
+    ],
+    "preferredLocations" : [
+      {
+        "name" : "Laycock Park"
+      },
+      {
+        "name" : "Ralph Klein Park"
+      },
+      {
+        "name" : "1 Street SW Station"
+      },
+      {
+        "name" : "Victoria Park\/Stampede Station"
+      },
+      {
+        "name" : "Brentwood Station"
+      },
+      {
+        "name" : "6 Street SW Station"
+      },
+      {
+        "name" : "Rotary Park"
+      },
+      {
+        "name" : "Griffith Woods"
+      },
+      {
+        "name" : "Edworthy Park"
+      },
+      {
+        "name" : "Sunnyside Station"
+      }
+    ],
+    "firstName" : "Zara",
+    "profilePicture" : "https:\/\/example.com\/zara_malik.jpg",
+    "ageRange" : 1,
+    "userRating" : 4.8
+  },
+  {
+    "ageRange" : 3,
+    "genderIdentity" : "Male",
+    "languages" : [
+      "English",
+      "Spanish"
+    ],
+    "userRating" : 4.5,
+    "firstName" : "Diego",
+    "pronouns" : "he\/him",
+    "profilePicture" : "https:\/\/example.com\/diego_rodriguez.jpg",
+    "interests" : [
+      "sports",
+      "music",
+      "foodAndCooking",
+      "localCommunityEvents"
+    ],
+    "email" : "diego.rodriguez@email.com",
+    "preferredLocations" : [
+      {
+        "name" : "West Nose Creek"
+      },
+      {
+        "name" : "1 Street SW Station"
+      },
+      {
+        "name" : "Central Memorial Park"
+      },
+      {
+        "name" : "12 Mile Coulee"
+      },
+      {
+        "name" : "Pearce Estate Park"
+      },
+      {
+        "name" : "North Glenmore Park"
+      },
+      {
+        "name" : "Century Gardens"
+      },
+      {
+        "name" : "Victoria Park\/Stampede Station"
+      },
+      {
+        "name" : "8 Street SW Station"
+      },
+      {
+        "name" : "Shawnessy Station"
+      }
+    ]
+  },
+  {
+    "userRating" : 4.6,
+    "ageRange" : 2,
+    "languages" : [
+      "English",
+      "Swahili"
+    ],
+    "genderIdentity" : "Female",
+    "firstName" : "Aisha",
+    "profilePicture" : "https:\/\/example.com\/aisha_omar.jpg",
+    "interests" : [
+      "natureAndOutdoors",
+      "environmentalIssues",
+      "booksAndLiterature",
+      "careerAndProfessionalDevelopment"
+    ],
+    "preferredLocations" : [
+      {
+        "name" : "Elliston Park"
+      },
+      {
+        "name" : "Connaught Park"
+      },
+      {
+        "name" : "Tom Campbell's Hill"
+      },
+      {
+        "name" : "Carburn Park"
+      },
+      {
+        "name" : "Sandy Beach"
+      },
+      {
+        "name" : "69 Street Station"
+      },
+      {
+        "name" : "45 Street Station"
+      },
+      {
+        "name" : "Cowboys Park"
+      },
+      {
+        "name" : "7 Street SW Station"
+      },
+      {
+        "name" : "Weaselhead Flats"
+      }
+    ],
+    "email" : "aisha.omar@email.com",
+    "pronouns" : "she\/her"
+  },
+  {
+    "firstName" : "Yuki",
+    "pronouns" : "she\/her",
+    "ageRange" : 1,
+    "genderIdentity" : "Female",
+    "interests" : [
+      "technology",
+      "artAndDesign",
+      "moviesAndTVShows",
+      "travel"
+    ],
+    "email" : "yuki.tanaka@email.com",
+    "preferredLocations" : [
+      {
+        "name" : "Olympic Plaza"
+      },
+      {
+        "name" : "Edworthy Park"
+      },
+      {
+        "name" : "Rouleauville Square"
+      },
+      {
+        "name" : "Inglewood Bird Sanctuary"
+      },
+      {
+        "name" : "Tomkins Park"
+      },
+      {
+        "name" : "Westbrook Station"
+      },
+      {
+        "name" : "Bridlewood Wetlands"
+      },
+      {
+        "name" : "Fish Creek-Lacombe Station"
+      },
+      {
+        "name" : "J.H. Woods Park"
+      },
+      {
+        "name" : "Edgemont Ravine"
+      }
+    ],
+    "userRating" : 4.4,
+    "languages" : [
+      "English",
+      "Japanese"
+    ],
+    "profilePicture" : "https:\/\/example.com\/yuki_tanaka.jpg"
+  },
+  {
+    "interests" : [
+      "technology",
+      "careerAndProfessionalDevelopment",
+      "foodAndCooking",
+      "sports"
+    ],
+    "ageRange" : 3,
+    "pronouns" : "he\/him",
+    "profilePicture" : "https:\/\/example.com\/raj_patel.jpg",
+    "userRating" : 4.2,
+    "email" : "raj.patel@email.com",
+    "genderIdentity" : "Male",
+    "languages" : [
+      "English",
+      "Hindi",
+      "Bengali"
+    ],
+    "firstName" : "Raj",
+    "preferredLocations" : [
+      {
+        "name" : "和園 Harmony Park"
+      },
+      {
+        "name" : "Centre St Station"
+      },
+      {
+        "name" : "Olympic Plaza"
+      },
+      {
+        "name" : "Saddletowne Station"
+      },
+      {
+        "name" : "4 Street SW Station"
+      },
+      {
+        "name" : "Eau Claire Plaza"
+      },
+      {
+        "name" : "Edgemont Ravine"
+      },
+      {
+        "name" : "Strathcona Ravines"
+      },
+      {
+        "name" : "Bridlewood Wetlands"
+      },
+      {
+        "name" : "Central Memorial Park"
+      }
+    ]
+  },
+  {
+    "interests" : [
+      "booksAndLiterature",
+      "artAndDesign",
+      "travel",
+      "localCommunityEvents"
+    ],
+    "profilePicture" : "https:\/\/example.com\/fatima_ahmed.jpg",
+    "firstName" : "Fatima",
+    "languages" : [
+      "English",
+      "Arabic",
+      "French"
+    ],
+    "genderIdentity" : "Female",
+    "pronouns" : "she\/her",
+    "email" : "fatima.ahmed@email.com",
+    "userRating" : 4.9,
+    "preferredLocations" : [
+      {
+        "name" : "Connaught Park"
+      },
+      {
+        "name" : "Centre St Station"
+      },
+      {
+        "name" : "Lions Park Station"
+      },
+      {
+        "name" : "Douglas Fir Trail"
+      },
+      {
+        "name" : "J.H. Woods Park"
+      },
+      {
+        "name" : "69 Street Station"
+      },
+      {
+        "name" : "Crowfoot Station"
+      },
+      {
+        "name" : "Martindale Station"
+      },
+      {
+        "name" : "Prince's Island Park"
+      },
+      {
+        "name" : "39 Avenue Station"
+      }
+    ],
+    "ageRange" : 2
+  },
+  {
+    "preferredLocations" : [
+      {
+        "name" : "Westbrook Station"
+      },
+      {
+        "name" : "Franklin Station"
+      },
+      {
+        "name" : "SAIT\/AUArts\/Jubilee Station"
+      },
+      {
+        "name" : "Lois Szabo Commons"
+      },
+      {
+        "name" : "Mills Park"
+      },
+      {
+        "name" : "8 Street SW Station"
+      },
+      {
+        "name" : "Sirocco Station"
+      },
+      {
+        "name" : "Poetic Park"
+      },
+      {
+        "name" : "Fish Creek-Lacombe Station"
+      },
+      {
+        "name" : "Brentwood Station"
+      }
+    ],
+    "interests" : [
+      "music",
+      "sports",
+      "natureAndOutdoors",
+      "photography"
+    ],
+    "pronouns" : "he\/him",
+    "profilePicture" : "https:\/\/example.com\/miguel_silva.jpg",
+    "firstName" : "Miguel",
+    "ageRange" : 1,
+    "email" : "miguel.silva@email.com",
+    "userRating" : 4.1,
+    "languages" : [
+      "English",
+      "Portuguese"
+    ],
+    "genderIdentity" : "Male"
+  },
+  {
+    "preferredLocations" : [
+      {
+        "name" : "South Glenmore Park"
+      },
+      {
+        "name" : "Laycock Park"
+      },
+      {
+        "name" : "Beaulieu Gardens"
+      },
+      {
+        "name" : "River Park"
+      },
+      {
+        "name" : "Crowfoot Station"
+      },
+      {
+        "name" : "Lions Park Station"
+      },
+      {
+        "name" : "Dale Hodges Park"
+      },
+      {
+        "name" : "8 Street SW Station"
+      },
+      {
+        "name" : "West Confederation Park"
+      },
+      {
+        "name" : "Big Marlborough Park"
+      }
+    ],
+    "email" : "nadia.petrova@email.com",
+    "genderIdentity" : "Female",
+    "interests" : [
+      "fitnessAndExercise",
+      "technology",
+      "artAndDesign",
+      "environmentalIssues"
+    ],
+    "pronouns" : "she\/her",
+    "userRating" : 4.7,
+    "languages" : [
+      "English",
+      "Russian",
+      "Ukrainian"
+    ],
+    "ageRange" : 2,
+    "firstName" : "Nadia",
+    "profilePicture" : "https:\/\/example.com\/nadia_petrova.jpg"
   }
 ]
