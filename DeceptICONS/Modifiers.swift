@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct IntroButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) var enabled
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundStyle(.text)
+            .foregroundStyle(.text.opacity(enabled ? 1 : 0.5))
             .font(.headline)
             .padding(18)
             .frame(maxWidth: .infinity)

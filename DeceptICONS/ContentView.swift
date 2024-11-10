@@ -14,6 +14,17 @@ struct ContentView: View {
     var body: some View {
         model.currentPage.view()
             .environmentObject(model)
+//            .onAppear {
+//                let users = AccountInfo.sampleUsers
+//
+//                // encode to JSON array
+//                let encoder = JSONEncoder()
+//                encoder.outputFormatting = .prettyPrinted
+//                let data = try! encoder.encode(users)
+//                let jsonString = String(data: data, encoding: .utf8)!
+//
+//                print(jsonString)
+//            }
     }
 }
 

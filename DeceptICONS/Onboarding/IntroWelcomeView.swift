@@ -53,7 +53,7 @@ struct IntroWelcomeView: View {
             .ignoresSafeArea()
         }
         .onAppear {
-            withAnimation(.easeOut(duration: 1.0)) {
+            withAnimation(.easeOut(duration: 1.0).delay(0.2)) {
                 showIntro = true
             }
         }
