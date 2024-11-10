@@ -1,8 +1,8 @@
 // src/Components/MyProfile.js
 import React, { useEffect, useState } from 'react';
-import { db } from '../firebase';
+import { db } from './firebase'
 import { collection, getDocs } from 'firebase/firestore';
-import './Styling/MyProfile.css';
+import './MyProfile.css';
 
 const MyProfile = () => {
   const [user, setUser] = useState(null);
@@ -32,6 +32,9 @@ const MyProfile = () => {
     <div className="profile-container">
       <div className="profile-card">
         <h2>{user.name}</h2>
+        
+        <p className="profile-rating">Welcome : {user.firstName} ★</p>
+
         <p className="profile-rating">Rating: {user.rating} ★</p>
         <h3>Interests</h3>
         <ul className="profile-interests">
