@@ -10,6 +10,7 @@ import LoggingIn from "./Components/LoggingIn";
 //import CreateAccount from "./Components/CreateAccount";
 import SignUp from "./Components/SignUp";
 import Interests from "./Components/Interests";
+import MyProfile from "./MyProfile"; // Import MyProfile component
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,7 @@ root.render(
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/interests" element={<Interests />} />
+        <Route path="/profile" element={<MyProfile />} /> {/* Add profile route */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

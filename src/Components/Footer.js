@@ -1,4 +1,4 @@
-// ButtonComponent.js
+// ButtonComponent.js (Footer)
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillHome, AiOutlineUser } from 'react-icons/ai';
@@ -20,14 +20,14 @@ const Footer = () => {
     }}>
       <div
         style={{ textAlign: 'center', cursor: 'pointer' }}
-        onClick={() => navigate('/')}
+        onClick={() => navigate('/dashboard')} // Navigates to Dashboard
       >
         <AiFillHome size={30} color="#8b5e83" />
         <p style={{ color: '#8b5e83', marginTop: '5px' }}>Start</p>
       </div>
       <div
         style={{ textAlign: 'center', cursor: 'pointer' }}
-        onClick={() => navigate('/profile')}
+        onClick={() => navigate('/profile')} // Navigates to Profile
       >
         <AiOutlineUser size={30} color="#8b5e83" />
         <p style={{ color: '#8b5e83', marginTop: '5px' }}>Profile</p>
