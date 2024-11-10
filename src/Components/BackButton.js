@@ -1,11 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function BackButton() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleBack = () => {
-    navigate('/'); // Navigate to App.js or the home route
+    // Check if the current path is /dashboard/locationSelect
+    if (location.pathname === '/dashboard/locationSelect') {
+      navigate('/dashboard'); // Navigate back to the Dashboard page
+    } else {
+      navigate('/'); // Navigate to the home route (App.js)
+    }
   };
 
   return (
