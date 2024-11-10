@@ -10,6 +10,7 @@ import LoggingIn from "./Components/LoggingIn";
 //import CreateAccount from "./Components/CreateAccount";
 import SignUp from "./Components/SignUp";
 import Interests from "./Components/Interests";
+import LocationList from "./Components/LocationList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,7 @@ root.render(
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/interests" element={<Interests />} />
+        <Route path="/dashboard/locationSelect" element={<LocationList />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
