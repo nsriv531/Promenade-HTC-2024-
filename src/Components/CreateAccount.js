@@ -28,12 +28,12 @@ function CreateAccount() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    e.preventDefault();
-    if (username === "admin" && password === "password") {
-      navigate("/dashboard"); // Redirect to dashboard if credentials are correct
-    } else {
-      alert("Invalid credentials"); // Alert if credentials are incorrect
-    }
+    // e.preventDefault();
+    // if (username === "admin" && password === "password") {
+    //   navigate("/dashboard"); // Redirect to dashboard if credentials are correct
+    // } else {
+    //   alert("Invalid credentials"); // Alert if credentials are incorrect
+    // }
   };
 
   return (
