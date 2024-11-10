@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         model.currentPage.view()
             .environmentObject(model)
-            .sheet(isPresented: .constant(firebase.currentlyInPromenade)) {
+            .sheet(isPresented: .constant(firebase.currentlyInPromenade || firebase.isReviewingPromenade)) {
                 ActivePromenadeView()
                     .interactiveDismissDisabled(true)
             }
@@ -49,19 +49,48 @@ struct ActivePromenadeView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Active Promenade")
-                .exposureFont()
-                .frame(maxWidth: .infinity, alignment: .leading)
+            if firebase.currentlyInPromenade {
+                Text("Active Promenade")
+                    .exposureFont()
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text("Your team is comprised of:")
-                .interFont()
+                Text("Your team is comprised of:")
+                    .interFont()
 
-            ForEach(firebase.promenadeUsers) { user in
-                UserView(user: user)
+                ForEach(firebase.promenadeUsers.users) { user in
+                    UserView(user: user)
+                }
+
+                Spacer()
+
+                Button("Fininsh Promenade") {
+                    Task {
+                        await firebase.endPromenade()
+                    }
+                }
+                .buttonStyle(IntroButtonStyle())
+            } else {
+                Text("Review Promenade")
+                    .exposureFont()
+
+                Text("Rate each member from your experience.")
+                    .interFont()
+
+                ForEach($firebase.promenadeUsers.users) { user in
+                    UserRateView(user: user)
+                }
+
+                Spacer()
+
+                Button("Submit Ratings") {
+                    Task {
+                        await firebase.submitPromenadeRatings()
+                    }
+                }
+                .buttonStyle(IntroButtonStyle())
             }
-
-            Spacer()
         }
+        .animation(.smooth(duration: 0.2), value: firebase.currentlyInPromenade)
         .padding()
         .modifier(BackgroundMeshModifier())
     }
@@ -70,6 +99,65 @@ struct ActivePromenadeView: View {
 extension ActivePromenadeView {
     struct UserView: View {
         let user: User
+
+        var body: some View {
+            HStack(spacing: 12) {
+                AsyncImage(
+                    url: URL(string: "https://thispersondoesnotexist.com/")!,
+                    content: { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    },
+                    placeholder: {
+                        Rectangle()
+                            .fill(.secondary)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                )
+                .clipShape(.rect(cornerRadius: 10))
+
+                VStack(alignment: .leading) {
+                    Text(user.firstName)
+                        .exposureFont(size: 32)
+                        .fixedSize()
+
+                    Group {
+                        Text(user.pronouns)
+                            .interFont(size: 16)
+                    }
+                }
+
+                Spacer()
+
+                HStack(spacing: 2) {
+                    ForEach(0 ..< 5, id: \.self) { star in
+                        let fullStar = "star.fill"
+                        let halfStar = "star.lefthalf.fill"
+                        let emptyStar = "star"
+
+                        let starRange = user.userRating - Float(star)
+                        let iconName = starRange >= 1 ? fullStar : starRange >= 0.5 ? halfStar : emptyStar
+
+                        Image(systemName: iconName)
+                    }
+                }
+            }
+            .frame(height: 60)
+            .foregroundStyle(Color(.text))
+            .font(.headline)
+            .padding(18)
+            .frame(maxWidth: .infinity)
+            .background {
+                RoundedRectangle(cornerRadius: 20)
+                    .foregroundStyle(Color(.background))
+                    .opacity(0.3)
+            }
+        }
+    }
+
+    struct UserRateView: View {
+        @Binding var user: User
         @State var isExpanded = false
 
         var body: some View {
@@ -117,7 +205,12 @@ extension ActivePromenadeView {
                                 let starRange = user.userRating - Float(star)
                                 let iconName = starRange >= 1 ? fullStar : starRange >= 0.5 ? halfStar : emptyStar
 
-                                Image(systemName: iconName)
+                                Button {
+                                    user.userRating = Float(star) + 1
+                                } label: {
+                                    Image(systemName: iconName)
+                                }
+                                .buttonStyle(.plain)
                             }
                         }
                     }

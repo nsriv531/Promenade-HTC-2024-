@@ -110,3 +110,8 @@ struct User: Identifiable, Hashable, Codable, Defaults.Serializable {
         }
     }
 }
+
+struct UserList: Identifiable, Hashable, Codable, Defaults.Serializable {
+    var id: String { "\(users.map({ $0.email }))" }
+    var users: [User]
+}

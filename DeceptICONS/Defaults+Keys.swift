@@ -10,6 +10,8 @@ import Foundation
 
 extension Defaults.Keys {
     static let currentlyInPromenade = Key<Bool>("currentlyInPromenade", default: false)
+    static let promenadeUsers = Key<UserList>("promenadeUsers", default: .init(users: []))
+
     static let account = Key<User?>("account", default: nil)
     static let accountsCache = Key<[User]>("accountsCache", default: [])
     static let locationCache = Key<[Location]>("locationCache", default: [])

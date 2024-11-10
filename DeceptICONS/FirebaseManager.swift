@@ -16,10 +16,15 @@ import GoogleSignIn
 class FirebaseManager: ObservableObject {
     static let shared = FirebaseManager()
 
-    @Published private(set) var promenadeUsers: [User] = []
+    @Published var promenadeUsers: UserList = Defaults[.promenadeUsers] {
+        didSet { Defaults[.promenadeUsers] = promenadeUsers }
+    }
+
     @Published private(set) var currentlyInPromenade: Bool = Defaults[.currentlyInPromenade] {
         didSet { Defaults[.currentlyInPromenade] = currentlyInPromenade }
     }
+
+    @Published private(set) var isReviewingPromenade: Bool = false
 
     @Published private(set) var account: User? = Defaults[.account] {
         didSet { Defaults[.account] = account }
@@ -54,6 +59,8 @@ class FirebaseManager: ObservableObject {
             await fetchSentInvites()
             await fetchReceivedInvites()
         }
+
+        currentlyInPromenade = false
     }
 
     //    func signInWithGoogle() async throws {
@@ -79,19 +86,47 @@ class FirebaseManager: ObservableObject {
     //    }
 
     func startPromenade() async {
-        let participants: [User] = sentInvites.filter { $0.status == .accepted }.map(\.toUser) + [account!]
+        let participants: UserList = .init(users: sentInvites.filter { $0.status == .accepted }.map(\.toUser) + [account!])
+
+        do {
+            // Add participants to active promenade
+            let reference = db.collection("activePromenades")
+            _ = try reference.addDocument(from: participants)
+        } catch {
+            print("Failed to start promenade: \(error)")
+        }
 
         // Remove sent invites for the promenade
         for invite in sentInvites where invite.status == .accepted {
             await unsendInvite(invite)
         }
 
-        // Add participants to active promenade
-        let reference = db.collection("activePromenades")
-        _ = try? reference.addDocument(from: participants)
-
         promenadeUsers = participants
         currentlyInPromenade = true
+    }
+
+    func endPromenade() async {
+        guard let documents = try? await db.collection("activePromenades").getDocuments() else { return }
+
+        for document in documents.documents {
+            if let decodedUsers = try? document.data(as: UserList.self), decodedUsers == promenadeUsers {
+                try? await document.reference.delete()
+                break
+            }
+        }
+
+        currentlyInPromenade = false
+        isReviewingPromenade = true
+    }
+
+    func submitPromenadeRatings() async {
+        for user in promenadeUsers.users {
+            await updateAccount(withEmail: user.email, to: user)
+            print("Updated \(user.firstName)'s rating to \(user.userRating)")
+        }
+
+        isReviewingPromenade = false
+        promenadeUsers = .init(users: [])
     }
 }
 
@@ -163,7 +198,7 @@ extension FirebaseManager {
         await fetchAccount()
     }
 
-    func updateAccount(_ user: User) async {
+    func updateMyAccount(to user: User) async {
         guard
             let currentUserEmail,
             let documents = try? await db.collection("users").getDocuments()
@@ -180,6 +215,22 @@ extension FirebaseManager {
 
         try? reference?.reference.setData(from: user)
         await fetchAccount()
+    }
+
+    func updateAccount(withEmail email: String, to user: User) async {
+        guard let documents = try? await db.collection("users").getDocuments() else {
+            return
+        }
+
+        let reference = documents.documents.first { item in
+            guard let data = try? item.data(as: User.self) else {
+                return false
+            }
+            return data.email == email
+        }
+
+        try? reference?.reference.setData(from: user)
+        await fetchUsers()
     }
 }
 

@@ -52,7 +52,7 @@ struct InterestSelectionView: View {
                 Task {
                     if var user = firebaseManager.account {
                         user.interests = interests
-                        await firebaseManager.updateAccount(user)
+                        await firebaseManager.updateMyAccount(to: user)
                     }
 
                     model.nextPage()
