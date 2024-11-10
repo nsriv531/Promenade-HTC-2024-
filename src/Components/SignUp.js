@@ -300,7 +300,7 @@ const SignUp = () => {
   //   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
       <div className="max-w-2xl w-full bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold mb-6 text-center">Create Account</h2>
         <h3 className="text-2xl  mb-6 text-center">Step into a Promenade</h3>
@@ -521,8 +521,6 @@ const SignUp = () => {
             onClick={handleLogin}>
             Next
           </button>
-        
-
           </div>
           </form>
       </div>

@@ -16,6 +16,8 @@ function LoggingIn() {
   };
 
   return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
+
     <form onSubmit={handleSubmit} className="bg-white p-8 max-w-lg mx-auto rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Login</h2>
 
@@ -48,6 +50,7 @@ function LoggingIn() {
         Login
       </button>
     </form>
+    </div>
   );
 }
 
