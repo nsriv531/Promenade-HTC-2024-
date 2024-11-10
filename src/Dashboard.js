@@ -6,7 +6,7 @@ function Dashboard() {
   const [activeTab, setActiveTab] = useState("trip");
 
   return (
-    <div className="dashboard">
+    <div className="dashboard bg-gradient-to-r from-lavender-pink to-light-cyan">
       <div className="dashboard-header">
         <button className="left-button">Left Button</button> {/* Placeholder button */}
         <h2>User Dashboard</h2>
