@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, signInWithPopup, signInWithRedirect } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import React, { useEffect, useContext, createContext, useState } from "react";
 import { app } from "../../firebase";
 import PropTypes from "prop-types";
@@ -14,7 +14,12 @@ const AuthProvider = ({ children }) => {
     const createGoogleUser = (provider) => {
         setLoading(true);
         return signInWithPopup(auth, provider);
-      }
+    }
+
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, initializeUser); // used for clean up, unmounts auth provider
@@ -36,7 +41,8 @@ const AuthProvider = ({ children }) => {
         currentUser,
         createGoogleUser,
         userLoggedIn,
-        loading
+        loading,
+        logOut
     }
 
     return (

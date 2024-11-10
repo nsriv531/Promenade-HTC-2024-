@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./Styling/Dashboard.css"; // For custom CSS styling
+import Footer from './Components/Footer';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("trip");
@@ -37,6 +38,8 @@ function Dashboard() {
         {activeTab === "trip" && <PlanYourTrip />}
         {activeTab === "profile" && <CheckYourProfile />}
       </div>
+
+      <Footer />
     </div>
   );
 }
