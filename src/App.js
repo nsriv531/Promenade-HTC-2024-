@@ -5,9 +5,9 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <div className="App flex h-screen bg-gradient-to-r from-lavender-pink to-light-cyan">
-      <header className="App-header m-auto">
-        <div className='py-56'>
+    <div className="App h-screen flex justify-center items-center bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <header className="App-header text-center">
+        <div className='py-56 m-auto'>
           <h1 className='font-customi text-wenge'>
             Promenade
           </h1>
