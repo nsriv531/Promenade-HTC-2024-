@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AlertCircle, CheckCircle } from "lucide-react";
-import { collection, addDoc } from "firebase/firestore"; // Import Firestore functions
-import { db } from "../firebase"; // Import Firestore instance from a parent directory
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 import Interests from "./Interests";
 
 const SignUp = () => {
@@ -85,6 +85,19 @@ const SignUp = () => {
 
     if (isValid) {
       try {
+        // Check if a user with the same email already exists
+        const usersCollection = collection(db, "users");
+        const emailQuery = query(usersCollection, where("email", "==", formData.email));
+        const querySnapshot = await getDocs(emailQuery);
+
+        if (!querySnapshot.empty) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            email: "Email already exists",
+          }));
+          return;
+        }
+
         // Create JSON object to be sent to Firestore
         const userData = {
           firstname: formData.firstname,
@@ -98,7 +111,7 @@ const SignUp = () => {
         };
 
         // Add document to Firestore
-        await addDoc(collection(db, "users"), userData);
+        await addDoc(usersCollection, userData);
 
         setIsSubmitted(true);
         // Navigate to the login page
