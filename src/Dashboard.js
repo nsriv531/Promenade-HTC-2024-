@@ -1,10 +1,16 @@
 // src/Components/Dashboard.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Styling/Dashboard.css"; // For custom CSS styling
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("trip");
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    // Perform login logic here, then navigate
+    navigate("/dashboard/locationSelect"); // Replace "/home" with your desired route
+  };
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -17,7 +23,7 @@ function Dashboard() {
       <div className="tab-buttons">
         <button
           className={`tab-button ${activeTab === "trip" ? "active" : ""}`}
-          onClick={() => setActiveTab("trip")}>
+          onClick={handleClick}>
           Plan Your Trip
         </button>
         <button
