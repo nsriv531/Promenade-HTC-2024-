@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App flex h-screen bg-gradient-to-r from-lavender-pink to-light-cyan">
       <header className="App-header m-auto">
-        <h1 className='font-custom text-wenge'>
-          Welcome to Our Platform
+        <h1 className='font-customi text-wenge'>
+          Promenade
         </h1>
         <p className='font-custom text-wenge'>
           Walk together, anytime.
