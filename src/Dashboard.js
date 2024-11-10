@@ -13,7 +13,7 @@ function Dashboard() {
     navigate("/dashboard/locationSelect"); // Replace "/home" with your desired route
   };
   return (
-    <div className="h-screen flex flex-col gap-6 bg-gradient-to-r from-lavender-pink to-light-cyan">
+    <div className="h-screen flex flex-col items-center gap-6 bg-gradient-to-r from-lavender-pink to-light-cyan">
       <div className="text-left text-wenge pl-4">
         <h2 className="font-customi text-5xl py-6">
           Promenade...
@@ -23,21 +23,15 @@ function Dashboard() {
         </h1>
       </div>
 
-      <div className={`font-inter-medium grid gap-3 grid-rows-2`}>
+      <div className={`font-inter-medium grid grid-rows-2 place-items-center`}>
         <button
           className={`text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan ${activeTab === "trip" ? "active" : ""}`}
           onClick={handleClick}>
           Plan Your Trip...
         </button>
-      </div>
-
-      <div className="tab-content">
-        {activeTab === "trip" && <PlanYourTrip />}
-        {activeTab === "profile" && <CheckYourProfile />}
-      </div>
-
-      <div className="">
-      <Footer />
+        <div className="">
+          <Footer />
+        </div>
       </div>
     </div>
   );
