@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AlertCircle, CheckCircle } from "lucide-react";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 import Interests from "./Interests";
 
 const SignUp = () => {
-  // Adding state management
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -20,17 +21,11 @@ const SignUp = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const ageRanges = ["18-24", "25-34", "35-44", "45-54", "55+"];
   const genderOptions = ["Man", "Woman", "Non-binary", "Other"];
   const pronounOptions = ["he/him", "she/her", "they/them", "Other"];
-
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    // Perform login logic here, then navigate
-    navigate("/interests"); // Replace "/home" with your desired route
-  };
 
   // Handle input
   const handleChange = (e) => {
@@ -47,7 +42,7 @@ const SignUp = () => {
     }
   };
 
-  //update interests
+  // Update interests
   const updateInterests = (newInterests) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -62,25 +57,17 @@ const SignUp = () => {
 
     if (!formData.firstname.trim())
       tempErr.firstname = "First name is required";
-    if (!formData.lastname.trim()) tempErr.lastname = "Last name is required";
     if (!formData.ageRange) tempErr.ageRange = "Age range is required";
-    if (!formData.genderIdentity) tempErr.genderIdentity = "Gender is required";
-
-    // Email validation
     if (!formData.email) {
       tempErr.email = "Email is required";
     } else if (!emailRegex.test(formData.email)) {
       tempErr.email = "Invalid email format";
     }
-
-    // Password validation
     if (!formData.password) {
       tempErr.password = "Password is required";
     } else if (formData.password.length < 8) {
       tempErr.password = "Password must be at least 8 characters";
     }
-
-    // Confirm password
     if (!formData.confirmPassword) {
       tempErr.confirmPassword = "Please confirm your password";
     } else if (formData.password !== formData.confirmPassword) {
@@ -92,13 +79,46 @@ const SignUp = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = validateForm();
 
     if (isValid) {
-      console.log("Form submitted: ", formData);
-      setIsSubmitted(true);
+      try {
+        // Check if a user with the same email already exists
+        const usersCollection = collection(db, "users");
+        const emailQuery = query(usersCollection, where("email", "==", formData.email));
+        const querySnapshot = await getDocs(emailQuery);
+
+        if (!querySnapshot.empty) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            email: "Email already exists",
+          }));
+          return;
+        }
+
+        // Create JSON object to be sent to Firestore
+        const userData = {
+          firstname: formData.firstname,
+          lastname: formData.lastname || null,
+          pronouns: formData.pronouns || null,
+          ageRange: formData.ageRange,
+          genderIdentity: formData.genderIdentity || null,
+          interests: formData.interests || [],
+          email: formData.email,
+          languages: formData.languages ? formData.languages.split(",") : [],
+        };
+
+        // Add document to Firestore
+        await addDoc(usersCollection, userData);
+
+        setIsSubmitted(true);
+        // Navigate to the login page
+        navigate("/");
+      } catch (error) {
+        console.error("Error creating user:", error);
+      }
     }
   };
 
@@ -106,7 +126,7 @@ const SignUp = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
       <div className="max-w-2xl w-full bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold mb-6 text-center">Create Account</h2>
-        <h3 className="text-2xl  mb-6 text-center">Step into a Promenade</h3>
+        <h3 className="text-2xl mb-6 text-center">Step into a Promenade</h3>
 
         {isSubmitted && (
           <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-lg flex items-center">
@@ -148,63 +168,29 @@ const SignUp = () => {
                   name="lastname"
                   value={formData.lastname}
                   onChange={handleChange}
-                  className={`w-full p-2 border rounded ${
-                    errors.lastname ? "border-red-500" : "border-gray-300"
-                  }`}
+                  className="w-full p-2 border rounded border-gray-300"
                 />
-                {errors.lastname && (
-                  <div className="mt-1 text-red-500 text-sm flex items-center">
-                    <AlertCircle className="mr-1" size={16} />
-                    {errors.lastname}
-                  </div>
-                )}
               </div>
 
-              {/* gender */}
+              {/* Pronouns */}
               <div>
-                <label className="block mb-1 font-medium">Gender</label>
-                <select
-                  name="genderIdentity"
-                  value={formData.genderIdentity}
-                  onChange={handleChange}
-                  className={`w-full p-2 border rounded ${
-                    errors.genderIdentity ? "border-red-500" : "border-gray-300"
-                  }`}>
-                  <option value="">Select Options</option>
-                  {genderOptions.map((range) => (
-                    <option key={range} value={range}>
-                      {range}
-                    </option>
-                  ))}
-                </select>
-                {errors.genderIdentity && (
-                  <div className="mt-1 text-red-500 text-sm flex items-center">
-                    <AlertCircle className="mr-1" size={16} />
-                    {errors.genderIdentity}
-                  </div>
-                )}
-              </div>
-
-              {/* pronouns */}
-              <div>
-                <label className="block mb-1 font-medium">
-                  Pronouns (Optional)
-                </label>
+                <label className="block mb-1 font-medium">Pronouns</label>
                 <select
                   name="pronouns"
                   value={formData.pronouns}
                   onChange={handleChange}
-                  className={`w-full p-2 border rounded`}>
-                  <option value="">Select Options</option>
-                  {pronounOptions.map((range) => (
-                    <option key={range} value={range}>
-                      {range}
+                  className="w-full p-2 border rounded border-gray-300"
+                >
+                  <option value="">Select pronouns</option>
+                  {pronounOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
                     </option>
                   ))}
                 </select>
               </div>
 
-              {/* Age Range */}
+              {/* Age Range (Required) */}
               <div>
                 <label className="block mb-1 font-medium">Age Range</label>
                 <select
@@ -213,7 +199,8 @@ const SignUp = () => {
                   onChange={handleChange}
                   className={`w-full p-2 border rounded ${
                     errors.ageRange ? "border-red-500" : "border-gray-300"
-                  }`}>
+                  }`}
+                >
                   <option value="">Select age range</option>
                   {ageRanges.map((range) => (
                     <option key={range} value={range}>
@@ -229,30 +216,45 @@ const SignUp = () => {
                 )}
               </div>
 
+              {/* Gender Identity */}
+              <div>
+                <label className="block mb-1 font-medium">Gender Identity</label>
+                <select
+                  name="genderIdentity"
+                  value={formData.genderIdentity}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded border-gray-300"
+                >
+                  <option value="">Select gender</option>
+                  {genderOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Interests */}
+              <div>
+                <label className="block mb-1 p-2 font-medium">Interests</label>
+                <Interests
+                  selectedInterests={formData.interests}
+                  onInterestsChange={updateInterests}
+                />
+              </div>
+
               {/* Languages */}
               <div>
-                <label className="block mb-1 font-medium">
-                  Languages (Optional)
-                </label>
+                <label className="block mb-1 font-medium">Languages</label>
                 <input
                   type="text"
                   name="languages"
                   value={formData.languages}
                   onChange={handleChange}
-                  className={`w-full p-2 border rounded`}
-                  placeholder="Languages (separated by commas)"
+                  className="w-full p-2 border rounded border-gray-300"
+                  placeholder="Languages (comma-separated)"
                 />
               </div>
-
-              {/* Other fields remain unchanged */}
-            </div>
-
-            <div>
-              <label className="block mb-1 p-2 font-medium">Interests</label>
-              <Interests
-                selectedInterests={formData.interests}
-                onInterestsChange={updateInterests}
-              />
             </div>
           </div>
 
@@ -260,7 +262,7 @@ const SignUp = () => {
           <div className="bg-gray-50 p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Account Information</h3>
             <div className="space-y-4">
-              {/* Email */}
+              {/* Email (Required) */}
               <div>
                 <label className="block mb-1 font-medium">Email</label>
                 <input
@@ -280,7 +282,7 @@ const SignUp = () => {
                 )}
               </div>
 
-              {/* Password */}
+              {/* Password (Required) */}
               <div>
                 <label className="block mb-1 font-medium">Password</label>
                 <input
@@ -302,18 +304,14 @@ const SignUp = () => {
 
               {/* Confirm Password */}
               <div>
-                <label className="block mb-1 font-medium">
-                  Confirm Password
-                </label>
+                <label className="block mb-1 font-medium">Confirm Password</label>
                 <input
                   type="password"
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   className={`w-full p-2 border rounded ${
-                    errors.confirmPassword
-                      ? "border-red-500"
-                      : "border-gray-300"
+                    errors.confirmPassword ? "border-red-500" : "border-gray-300"
                   }`}
                 />
                 {errors.confirmPassword && (
@@ -325,15 +323,16 @@ const SignUp = () => {
               </div>
             </div>
           </div>
+
           <div className="text-center">
-          <button
-            type="submit"
-            className="font-inter text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan"
-            onClick={handleLogin}>
-            Create Account
-          </button>
+            <button
+              type="submit"
+              className="font-inter text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan"
+            >
+              Create Account
+            </button>
           </div>
-          </form>
+        </form>
       </div>
     </div>
   );
