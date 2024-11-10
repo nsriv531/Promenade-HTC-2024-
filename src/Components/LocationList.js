@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import BackButton from './BackButton';
 
 const LocationList = () => {
   const [filterInput, setFilterInput] = useState("");
@@ -55,6 +56,7 @@ const LocationList = () => {
 
   return (
     <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <BackButton />
       <p className="mb-4">
         <input
           id="filter"

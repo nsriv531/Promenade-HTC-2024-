@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AlertCircle, CheckCircle } from "lucide-react";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import BackButton from './BackButton';
 import Interests from "./Interests";
 
 const SignUp = () => {
@@ -123,11 +124,11 @@ const SignUp = () => {
   };
 
   return (
-    <div className="font-inter-medium min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
-      <div className="max-w-2xl w-full p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center font-custom text-wenge">Create Account</h2>
-        <h3 className="text-2xl mb-6 text-center font-customi text-wenge">Step into a Promenade</h3>
-
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <div className="max-w-2xl w-full bg-white p-8 rounded-lg shadow-lg">
+      <BackButton /> {/* Add the BackButton here at the top */}
+        <h2 className="text-3xl font-bold mb-6 text-center">Create Account</h2>
+        <h3 className="text-2xl mb-6 text-center">Step into a Promenade</h3>
         {isSubmitted && (
           <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-lg flex items-center">
             <CheckCircle className="mr-2" size={20} />
