@@ -13,24 +13,21 @@ function Dashboard() {
     navigate("/dashboard/locationSelect"); // Replace "/home" with your desired route
   };
   return (
-    <div className="dashboard bg-gradient-to-r from-lavender-pink to-light-cyan">
-      <div className="dashboard-header">
-        <button className="left-button">Left Button</button>{" "}
-        {/* Placeholder button */}
-        <h2>User Dashboard</h2>
-        <div className="profile-icon">👤</div> {/* Profile icon */}
+    <div className="h-screen flex flex-col gap-6 bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <div className="text-left text-wenge pl-4">
+        <h2 className="font-customi text-5xl py-6">
+          Promenade...
+        </h2>
+        <h1 className="font-inter-medium text-2xl">
+          Safety first.
+        </h1>
       </div>
 
-      <div className="tab-buttons">
+      <div className={`font-inter-medium grid gap-3 grid-rows-2`}>
         <button
-          className={`tab-button ${activeTab === "trip" ? "active" : ""}`}
+          className={`text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan ${activeTab === "trip" ? "active" : ""}`}
           onClick={handleClick}>
-          Plan Your Trip
-        </button>
-        <button
-          className={`tab-button ${activeTab === "profile" ? "active" : ""}`}
-          onClick={() => setActiveTab("profile")}>
-          Check Your Profile
+          Plan Your Trip...
         </button>
       </div>
 
@@ -39,7 +36,9 @@ function Dashboard() {
         {activeTab === "profile" && <CheckYourProfile />}
       </div>
 
+      <div className="">
       <Footer />
+      </div>
     </div>
   );
 }

@@ -22,7 +22,7 @@ function App() {
             Walk together, anytime.
           </p>
         </div>
-        <div className={`grid gap-3 grid-rows-4 ${isTransitioning ? "animate-slideDown" : ""}`}>
+        <div className={`grid gap-3 grid-rows-2 ${isTransitioning ? "animate-slideDown" : ""}`}>
           <button className="font-inter text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan" onClick={() => handleNavigate("/login")}>
             Sign In
           </button>
