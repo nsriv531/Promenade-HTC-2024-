@@ -11,6 +11,7 @@ import LoggingIn from "./Components/LoggingIn";
 import SignUp from "./Components/SignUp";
 import Interests from "./Components/Interests";
 import AuthProvider from './Contexts/authContexts';
+import MyProfile from "./MyProfile"; // Import MyProfile component
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -23,7 +24,8 @@ root.render(
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/interests" element={<Interests />} />
-        </Routes>
+          <Route path="/profile" element={<MyProfile />} /> {/* Add profile route */}
+      </Routes>
       </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>
