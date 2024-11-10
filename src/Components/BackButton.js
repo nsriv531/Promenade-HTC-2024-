@@ -7,9 +7,11 @@ function BackButton() {
 
   const handleBack = () => {
     // Check if the current path is /dashboard/locationSelect
-    if (location.pathname === '/dashboard/locationSelect') {
+    if (location.pathname === '/dashboard/locationSelect' || location.pathname === '/profile' ) {
       navigate('/dashboard'); // Navigate back to the Dashboard page
-    } else {
+    } 
+    
+    else {
       navigate('/'); // Navigate to the home route (App.js)
     }
   };
