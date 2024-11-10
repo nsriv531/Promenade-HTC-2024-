@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct InterestSelectionView: View {
+    @ObservedObject var firebaseManager: FirebaseManager = .shared
     @EnvironmentObject var model: AppModel
-    @State var interests: [User.Interest] = []
+    @State var interests: [User.Interest] = FirebaseManager.shared.account?.interests ?? []
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -47,9 +48,15 @@ struct InterestSelectionView: View {
 
             Spacer()
 
-            Button("Create Account") {
-                model.account?.interests = interests
-                model.nextPage()
+            Button("Continue") {
+                Task {
+                    if var user = firebaseManager.account {
+                        user.interests = interests
+                        await firebaseManager.updateAccount(user)
+                    }
+
+                    model.nextPage()
+                }
             }
             .buttonStyle(IntroButtonStyle())
         }

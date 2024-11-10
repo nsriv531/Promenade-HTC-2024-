@@ -13,4 +13,5 @@ extension Defaults.Keys {
     static let accountsCache = Key<[User]>("accountsCache", default: [])
     static let locationCache = Key<[Location]>("locationCache", default: [])
     static let sentInvitesCache = Key<[Invite]>("sentInvitesCache", default: [])
+    static let receivedInvitesCache = Key<[Invite]>("receivedInvitesCache", default: [])
 }

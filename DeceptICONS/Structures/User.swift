@@ -8,6 +8,7 @@
 import Defaults
 import SwiftUI
 
+@MainActor
 struct User: Identifiable, Hashable, Codable, Defaults.Serializable {
     var id: String { email }
 

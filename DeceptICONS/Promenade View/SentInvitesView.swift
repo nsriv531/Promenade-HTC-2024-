@@ -1,0 +1,104 @@
+//
+//  SentInvitesView.swift
+//  DeceptICONS
+//
+//  Created by Kai Azim on 2024-11-10.
+//
+
+import SwiftUI
+
+struct SentInvitesView: View {
+    @ObservedObject var firebase: FirebaseManager = .shared
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Sent invites")
+                    .exposureFont()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                ForEach(firebase.sentInvites.sorted(by: { $0.toUser.firstName < $1.toUser.firstName })) { invite in
+                    InviteView(invite: invite)
+                }
+            }
+            .padding()
+        }
+        .refreshable(action: firebase.fetchSentInvites)
+        .modifier(BackgroundMeshModifier())
+        .task {
+            await firebase.fetchSentInvites()
+        }
+    }
+}
+
+extension SentInvitesView {
+    struct InviteView: View {
+        let invite: Invite
+        @State var isExpanded = false
+
+        var body: some View {
+            Button {
+                withAnimation(.smooth(duration: 0.2)) {
+                    isExpanded.toggle()
+                }
+            } label: {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack(spacing: 12) {
+                        AsyncImage(
+                            url: URL(string: "https://thispersondoesnotexist.com/")!,
+                            content: { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            },
+                            placeholder: {
+                                Rectangle()
+                                    .fill(.secondary)
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                        )
+                        .clipShape(.rect(cornerRadius: 10))
+
+                        VStack(alignment: .leading) {
+                            Text(invite.toUser.firstName)
+                                .exposureFont(size: 32)
+                                .fixedSize()
+
+                            Group {
+                                Text(invite.toUser.pronouns)
+                                    .interFont(size: 16)
+                            }
+                        }
+
+                        Spacer()
+
+                        HStack {
+                            Text(invite.status.name)
+                                .font(.caption)
+                            invite.status.iconView()
+                        }
+                    }
+                    .frame(height: 60)
+
+                    if isExpanded {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Interests: \(invite.toUser.interests.map(\.name).joined(separator: ", "))")
+                                .lineLimit(5)
+                                .fixedSize(horizontal: false, vertical: true)
+
+                            Text("Languages: \(invite.toUser.languages.joined(separator: ", "))")
+                                .lineLimit(5)
+                                .fixedSize(horizontal: false, vertical: true)
+
+                            Text("Age range: \(invite.toUser.ageRange.name)")
+                                .lineLimit(5)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
+                }
+            }
+            .buttonStyle(IntroButtonStyle(cornerRadius: 28))
+            .clipped()
+        }
+    }
+}

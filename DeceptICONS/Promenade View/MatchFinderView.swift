@@ -17,20 +17,18 @@ struct MatchFinderView: View {
     @State var results: [User]? = nil
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 12) {
-                if results != nil {
-                    ForEach(results!) { user in
-                        UserView(user: user)
-                    }
-                } else {
-                    ProgressView()
+        VStack(alignment: .leading, spacing: 12) {
+            if results != nil {
+                ForEach(results!) { user in
+                    UserView(user: user, initialLocation: startingLocation, finalLocation: finalLocation)
                 }
+            } else {
+                ProgressView()
             }
-            .padding()
         }
-        .modifier(BackgroundMeshModifier())
         .task {
+            guard results == nil else { return }
+
             let matches = recommendUsers(me, firebase.users, finalLocation)
 
             for match in matches {
@@ -42,7 +40,6 @@ struct MatchFinderView: View {
                     }
                 }
 
-                print("Added \(match.firstName)")
                 try? await Task.sleep(for: .milliseconds(200))
             }
         }
@@ -94,6 +91,8 @@ extension MatchFinderView {
         @ObservedObject var firebase: FirebaseManager = .shared
 
         let user: User
+        let initialLocation: Location
+        let finalLocation: Location
         @State var isExpanded = false
         @State var didInvite = false
 
@@ -163,10 +162,22 @@ extension MatchFinderView {
                                 .fixedSize(horizontal: false, vertical: true)
 
                             Button {
-                                firebase.sentInvites.append(.init(user))
+                                Task {
+                                    if let account = firebase.account {
+                                        await firebase.sendInvite(
+                                            .init(
+                                                fromUser: account,
+                                                toUser: user,
+                                                initialLocation: initialLocation,
+                                                finalLocation: finalLocation,
+                                                status: .pending
+                                            )
+                                        )
+                                    }
 
-                                withAnimation(.smooth(duration: 0.8)) {
-                                    didInvite = true
+                                    withAnimation(.smooth(duration: 0.8)) {
+                                        didInvite = true
+                                    }
                                 }
                             } label: {
                                 Text(didInvite ? "\(Image(systemName: "checkmark.seal")) Invited" : "\(Image(systemName: "paperplane"))Invite to Promenade...")
@@ -183,5 +194,4 @@ extension MatchFinderView {
             .clipped()
         }
     }
-
 }

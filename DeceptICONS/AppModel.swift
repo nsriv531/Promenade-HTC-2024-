@@ -8,20 +8,16 @@
 import Defaults
 import SwiftUI
 
+@MainActor
 class AppModel: ObservableObject {
     @Published var currentPage: AppPage = .welcome
-    @Published var account: User? = nil {
-//    @Published var account: AccountInfo? = Defaults[.account] {
-        didSet {
-            Defaults[.account] = account
-        }
-    }
 
     func nextPage() {
+        let firebase = FirebaseManager.shared
         var nextPage = AppPage(rawValue: currentPage.rawValue + 1) ?? .welcome
 
-        if account != nil, nextPage == .createAccount {
-            if account?.interests.isEmpty ?? true {
+        if firebase.account != nil, nextPage == .createAccount {
+            if firebase.account?.interests.isEmpty ?? true {
                 nextPage = .interests
             } else {
                 nextPage = .home
@@ -36,6 +32,7 @@ class AppModel: ObservableObject {
     enum AppPage: Int, CaseIterable {
         case welcome
         case createAccount
+        case enterInformation
         case interests
         case home
 
@@ -46,6 +43,8 @@ class AppModel: ObservableObject {
                 IntroWelcomeView()
             case .createAccount:
                 AccountCreationView()
+            case .enterInformation:
+                AccountInfoView()
             case .interests:
                 InterestSelectionView()
             case .home:
