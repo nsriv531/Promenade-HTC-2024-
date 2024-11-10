@@ -1,4 +1,3 @@
-// MatchedUsersPage.js
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -16,13 +15,6 @@ const MatchedUsersPage = () => {
         const usersSnapshot = await getDocs(collection(db, "users"));
         const usersData = usersSnapshot.docs.map((doc) => doc.data());
 
-        // Filter users based on preferredLocations matching the startLocation's category
-        const filteredUsers = usersData.filter(
-          (user) =>
-            user.preferredLocations &&
-            user.preferredLocations.includes(startLocation.category) // Check if user's preferred locations include start location category
-        );
-
         // Fetch all locations in the same category as endLocation for use as possible end locations
         const locationsSnapshot = await getDocs(collection(db, "locations"));
         const locationsData = locationsSnapshot.docs
@@ -30,13 +22,13 @@ const MatchedUsersPage = () => {
           .filter((location) => location.category === endLocation.category);
 
         // Select three random users and assign each a random end location
-        const randomUsers = filteredUsers
+        const randomUsers = usersData
           .sort(() => 0.5 - Math.random())
           .slice(0, 3)
           .map((user) => {
             const randomEndLocation =
               locationsData[Math.floor(Math.random() * locationsData.length)];
-            return { ...user, endLocation: randomEndLocation.name };
+            return { ...user, endLocation: randomEndLocation?.name };
           });
 
         setMatchedUsers(randomUsers);
@@ -58,8 +50,8 @@ const MatchedUsersPage = () => {
           {matchedUsers.map((user, index) => (
             <li key={index} className="mb-2">
               <strong>User:</strong> {user.firstName} <br />
-              <strong>Starting Location:</strong> {startLocation} <br />
-              <strong>Random End Location:</strong> {endLocation}
+              <strong>Starting Location:</strong> {startLocation.name} <br />
+              <strong>Random End Location:</strong> {user.endLocation}
             </li>
           ))}
         </ul>
