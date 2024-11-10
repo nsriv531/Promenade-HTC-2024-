@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Defaults
-import Kingfisher
 
 struct LocationChooserView: View {
     @State private var initialLocation: Location? = nil
@@ -55,9 +54,9 @@ struct LocationChooserView: View {
 }
 
 struct LocationSearchView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
+    @ObservedObject private var firebase: FirebaseManager = .shared
 
-    let locations = Location.all
     @State private var searchText = ""
     @Binding var selectedLocation: Location?
 
@@ -79,9 +78,9 @@ struct LocationSearchView: View {
 
     var searchResults: [Location] {
         if searchText.isEmpty {
-            return locations
+            return firebase.locations
         } else {
-            return locations.filter { $0.name.contains(searchText) }
+            return firebase.locations.filter { $0.name.contains(searchText) }
         }
     }
 }

@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct MatchFinderView: View {
-    let me: AccountInfo
+    @ObservedObject private var firebase: FirebaseManager = .shared
+
+    let me: User
     let startingLocation: Location
     let finalLocation: Location
-    let options: [AccountInfo] = AccountInfo.sampleUsers
 
-    @State var results: [AccountInfo]? = nil
+    @State var results: [User]? = nil
 
     var body: some View {
         ScrollView {
@@ -30,7 +31,7 @@ struct MatchFinderView: View {
         }
         .modifier(BackgroundMeshModifier())
         .task {
-            let matches = recommendUsers(me, options, finalLocation)
+            let matches = recommendUsers(me, firebase.users, finalLocation)
 
             for match in matches {
                 withAnimation(.smooth(duration: 0.2)) {
@@ -48,10 +49,10 @@ struct MatchFinderView: View {
     }
 
     func recommendUsers(
-        _ user: AccountInfo,
-        _ options: [AccountInfo],
+        _ user: User,
+        _ options: [User],
         _ location: Location
-    ) -> [AccountInfo] {
+    ) -> [User] {
         // Filter profiles by location
         let profilesInLocation = options.filter { $0.preferredLocations.contains(where: { location.name == $0.name }) }
 
@@ -71,17 +72,17 @@ struct MatchFinderView: View {
     }
 
     func calculateAgeScore(
-        _ range1: AccountInfo.AgeRange,
-        _ range2: AccountInfo.AgeRange
+        _ range1: User.AgeRange,
+        _ range2: User.AgeRange
     ) -> Int {
         let difference = abs(range1.rawValue - range2.rawValue)
-        let max = AccountInfo.AgeRange.allCases.last!.rawValue
+        let max = User.AgeRange.allCases.last!.rawValue
         return max - difference
     }
 
     func calculateInterestScore(
-        _ interest1: [AccountInfo.Interest],
-        _ interest2: [AccountInfo.Interest]
+        _ interest1: [User.Interest],
+        _ interest2: [User.Interest]
     ) -> Int {
         let sharedInterests = Set(interest1).intersection(Set(interest2))
         return sharedInterests.count

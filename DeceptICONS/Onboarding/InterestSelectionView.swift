@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InterestSelectionView: View {
     @EnvironmentObject var model: AppModel
-    @State var interests: [AccountInfo.Interest] = []
+    @State var interests: [User.Interest] = []
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -24,7 +24,7 @@ struct InterestSelectionView: View {
                 .frame(height: 12)
 
             WrappingCollectionView(
-                data: AccountInfo.Interest.allCases,
+                data: User.Interest.allCases,
                 singleItemHeight: 16
             ) { item in
                 Button {

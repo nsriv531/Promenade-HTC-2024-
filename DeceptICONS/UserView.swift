@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserView: View {
-    let user: AccountInfo
+    let user: User
     @State var isExpanded = false
 
     var body: some View {

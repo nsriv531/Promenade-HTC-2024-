@@ -15,7 +15,7 @@ struct AccountCreationView: View {
     @State var languages: String = ""
     @State var email: String = ""
     @State var profilePicture: String = ""
-    @State var ageRange: AccountInfo.AgeRange = .range18_24
+    @State var ageRange: User.AgeRange = .range18_24
     @State var genderIdentity: String = ""
 
     var body: some View {
@@ -43,7 +43,7 @@ struct AccountCreationView: View {
                     .foregroundStyle(.tertiary)
                 Spacer()
                 Picker("", selection: $ageRange) {
-                    ForEach(AccountInfo.AgeRange.allCases) { range in
+                    ForEach(User.AgeRange.allCases) { range in
                         Text("\(range.name)")
                             .tag(range)
                     }
@@ -60,7 +60,7 @@ struct AccountCreationView: View {
             Spacer()
 
             Button("Create Account") {
-                model.account = AccountInfo(
+                model.account = User(
                     firstName: firstName,
                     pronouns: pronouns,
                     languages: languages.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) },

@@ -10,7 +10,7 @@ import SwiftUI
 
 class AppModel: ObservableObject {
     @Published var currentPage: AppPage = .welcome
-    @Published var account: AccountInfo? = nil {
+    @Published var account: User? = nil {
 //    @Published var account: AccountInfo? = Defaults[.account] {
         didSet {
             Defaults[.account] = account

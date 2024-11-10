@@ -8,7 +8,7 @@
 import SwiftUI
 import Defaults
 
-struct AccountInfo: Identifiable, Codable, Defaults.Serializable {
+struct User: Identifiable, Codable, Defaults.Serializable {
     var id: String { email }
 
     var firstName: String
@@ -44,7 +44,10 @@ struct AccountInfo: Identifiable, Codable, Defaults.Serializable {
         self.interests = interests
         self.userRating = userRating
         if preferredLocations.isEmpty {
-            self.preferredLocations = Location.all.shuffled().prefix(10).map { $0 }
+            self.preferredLocations = FirebaseManager.shared.locations
+                .shuffled()
+                .prefix(10)
+                .map { $0 }
         } else {
             self.preferredLocations = preferredLocations
         }

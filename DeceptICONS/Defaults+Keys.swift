@@ -9,5 +9,5 @@ import Defaults
 import Foundation
 
 extension Defaults.Keys {
-    static let account = Key<AccountInfo?>("account", default: nil)
+    static let account = Key<User?>("account", default: nil)
 }
