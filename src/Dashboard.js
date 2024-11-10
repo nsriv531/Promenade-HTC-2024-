@@ -10,9 +10,15 @@ import Footer from './Components/Footer';
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("trip");
   const [firstName, setFirstName] = useState(""); // Store the user's first name
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const navigate = useNavigate();
   const auth = getAuth();
   const db = getFirestore();
+
+  const handleNavigate = (path) => {
+    setIsTransitioning(true);
+    setTimeout(() => navigate(path), 1000); // Navigate after animation
+  }
 
   useEffect(() => {
     // Get the current user email
@@ -38,12 +44,12 @@ function Dashboard() {
 
   const handleClick = () => {
     // Perform login logic here, then navigate
-    navigate("/dashboard/locationSelect"); // Replace "/home" with your desired route
+    handleNavigate("/dashboard/locationSelect"); // Replace "/home" with your desired route
   };
 
   return (
     <div className="h-screen flex flex-col items-center gap-6 bg-gradient-to-r from-lavender-pink to-light-cyan">
-      <div className="text-left text-wenge pl-4">
+      <div className={`text-left text-wenge pl-4 ${isTransitioning ? "animate-LslideOut" : "animate-LslideIn"}`}>
         <h2 className="font-customi text-5xl py-6">
           Promenade...
         </h2>
@@ -54,11 +60,11 @@ function Dashboard() {
 
       <div className={`font-inter-medium grid grid-rows-2 place-items-center`}>
         <button
-          className={`text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan ${activeTab === "trip" ? "active" : ""}`}
+          className={`text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan ${activeTab === "trip" ? "active" : ""} ${isTransitioning ? "animate-LslideOut" : "animate-LslideIn"}`}
           onClick={handleClick}>
           Plan Your Trip...
         </button>
-        <div className="">
+        <div className={`${isTransitioning ? "animate-LslideOut" : "animate-LslideIn"}`}>
           <Footer />
         </div>
       </div>

@@ -123,10 +123,10 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
-      <div className="max-w-2xl w-full bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center">Create Account</h2>
-        <h3 className="text-2xl mb-6 text-center">Step into a Promenade</h3>
+    <div className="font-inter-medium min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <div className="max-w-2xl w-full p-8 rounded-lg shadow-lg">
+        <h2 className="text-3xl font-bold mb-6 text-center font-custom text-wenge">Create Account</h2>
+        <h3 className="text-2xl mb-6 text-center font-customi text-wenge">Step into a Promenade</h3>
 
         {isSubmitted && (
           <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-lg flex items-center">
@@ -137,7 +137,7 @@ const SignUp = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Personal Information Section */}
-          <div className="bg-gray-50 p-6 rounded-lg">
+          <div className="bg-gray-50 p-6 rounded-lg bg-opacity-55">
             <h3 className="text-xl font-semibold mb-4">Personal Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
               {/* First Name */}
@@ -148,7 +148,7 @@ const SignUp = () => {
                   name="firstname"
                   value={formData.firstname}
                   onChange={handleChange}
-                  className={`w-full p-2 border rounded ${
+                  className={`w-full p-2 border border-wenge rounded ${
                     errors.firstname ? "border-red-500" : "border-gray-300"
                   }`}
                 />
@@ -168,7 +168,7 @@ const SignUp = () => {
                   name="lastname"
                   value={formData.lastname}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded border-gray-300"
+                  className="w-full p-2 border rounded border-wenge"
                 />
               </div>
 
@@ -179,7 +179,7 @@ const SignUp = () => {
                   name="pronouns"
                   value={formData.pronouns}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded border-gray-300"
+                  className="w-full p-2 border rounded border-wenge"
                 >
                   <option value="">Select pronouns</option>
                   {pronounOptions.map((option) => (
@@ -198,7 +198,7 @@ const SignUp = () => {
                   value={formData.ageRange}
                   onChange={handleChange}
                   className={`w-full p-2 border rounded ${
-                    errors.ageRange ? "border-red-500" : "border-gray-300"
+                    errors.ageRange ? "border-red-500" : "border-wenge"
                   }`}
                 >
                   <option value="">Select age range</option>
@@ -223,7 +223,7 @@ const SignUp = () => {
                   name="genderIdentity"
                   value={formData.genderIdentity}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded border-gray-300"
+                  className="w-full p-2 border rounded border-wenge"
                 >
                   <option value="">Select gender</option>
                   {genderOptions.map((option) => (
@@ -251,7 +251,7 @@ const SignUp = () => {
                   name="languages"
                   value={formData.languages}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded border-gray-300"
+                  className="w-full p-2 border rounded border-wenge"
                   placeholder="Languages (comma-separated)"
                 />
               </div>
@@ -259,9 +259,9 @@ const SignUp = () => {
           </div>
 
           {/* Account Information Section */}
-          <div className="bg-gray-50 p-6 rounded-lg">
+          <div className="bg-gray-50 p-6 rounded-lg bg-opacity-55">
             <h3 className="text-xl font-semibold mb-4">Account Information</h3>
-            <div className="space-y-4">
+            <div className="space-y-4 border-wenge">
               {/* Email (Required) */}
               <div>
                 <label className="block mb-1 font-medium">Email</label>
@@ -271,7 +271,7 @@ const SignUp = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full p-2 border rounded ${
-                    errors.email ? "border-red-500" : "border-gray-300"
+                    errors.email ? "border-red-500" : "border-wenge"
                   }`}
                 />
                 {errors.email && (
@@ -291,7 +291,7 @@ const SignUp = () => {
                   value={formData.password}
                   onChange={handleChange}
                   className={`w-full p-2 border rounded ${
-                    errors.password ? "border-red-500" : "border-gray-300"
+                    errors.password ? "border-red-500" : "border-wenge"
                   }`}
                 />
                 {errors.password && (
@@ -311,7 +311,7 @@ const SignUp = () => {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   className={`w-full p-2 border rounded ${
-                    errors.confirmPassword ? "border-red-500" : "border-gray-300"
+                    errors.confirmPassword ? "border-red-500" : "border-wenge"
                   }`}
                 />
                 {errors.confirmPassword && (
@@ -327,7 +327,7 @@ const SignUp = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="font-inter text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan"
+              className="font-inter h-12 w-80 rounded-xl bg-opacity-45 bg-gray-200"
             >
               Create Account
             </button>

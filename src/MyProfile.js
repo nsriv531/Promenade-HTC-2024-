@@ -11,7 +11,13 @@ const MyProfile = () => {
   const { logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const auth = getAuth();
+
+  const handleNavigate = (path) => {
+    setIsTransitioning(true);
+    setTimeout(() => navigate(path), 1000); // Navigate after animation
+  }
 
   // Function to fetch the logged-in user's profile
   const fetchUserProfile = async () => {
@@ -46,15 +52,15 @@ const MyProfile = () => {
   const handleSignOut = () => {
     logOut().then(() => {
       console.log('User signed out successfully');
-      navigate("/");
+      handleNavigate("/");
     }).catch((error) => {
       console.error('Error signing out:', error);
     });
   };
 
   return (
-    <div className="profile-container">
-      <div className="profile-card">
+    <div className={`profile-container ${isTransitioning ? "animate-fadeOut" : ""}`}>
+      <div className={`profile-card ${isTransitioning ? "animate-slideUp" : ""}`}>
         <h2>{user.firstName ? `Hello, ${user.firstName}` : "Hello, User"}</h2>
         
         <p className="profile-rating">Welcome: {user.firstName} ★</p>
@@ -71,7 +77,11 @@ const MyProfile = () => {
             <li>No interests found</li>
           )}
         </ul>
-        <button onClick={handleSignOut}>Sign Out</button>
+        <button 
+          className={`bg-red-600 text-white rounded py-2 px-20`}
+          onClick={handleSignOut}>
+          Sign Out
+        </button>
       </div>
     </div>
   );
