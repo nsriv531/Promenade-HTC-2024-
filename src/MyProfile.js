@@ -6,6 +6,7 @@ import { AuthContext } from './Contexts/authContexts';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './MyProfile.css';
+import BackButton from './Components/BackButton';
 
 const MyProfile = () => {
   const { logOut } = useContext(AuthContext);
@@ -61,6 +62,7 @@ const MyProfile = () => {
   return (
     <div className={`profile-container ${isTransitioning ? "animate-fadeOut" : ""}`}>
       <div className={`profile-card ${isTransitioning ? "animate-slideUp" : ""}`}>
+      <BackButton />
         <h2>{user.firstName ? `Hello, ${user.firstName}` : "Hello, User"}</h2>
         
         <p className="profile-rating">Welcome: {user.firstName} ★</p>
