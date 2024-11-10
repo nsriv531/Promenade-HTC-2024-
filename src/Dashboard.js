@@ -49,7 +49,7 @@ function Dashboard() {
 
   return (
     <div className="h-screen flex flex-col items-center gap-6 bg-gradient-to-r from-lavender-pink to-light-cyan">
-      <div className="text-left text-wenge pl-4">
+      <div className={`text-left text-wenge pl-4 ${isTransitioning ? "animate-LslideOut" : "animate-LslideIn"}`}>
         <h2 className="font-customi text-5xl py-6">
           Promenade...
         </h2>
