@@ -54,7 +54,7 @@ function Dashboard() {
           Promenade...
         </h2>
         <h1 className="font-inter-medium text-2xl">
-          Safety first.
+          Plan your route.
         </h1>
       </div>
 

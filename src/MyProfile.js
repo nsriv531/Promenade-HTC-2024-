@@ -60,7 +60,7 @@ const MyProfile = () => {
 
   return (
     <div className={`profile-container ${isTransitioning ? "animate-fadeOut" : ""}`}>
-      <div className={`profile-card ${isTransitioning ? "animate-slideUp" : ""}`}>
+      <div className={`profile-card ${isTransitioning ? "animate-slideUp" : "animate-slideIn"}`}>
         <h2>{user.firstName ? `Hello, ${user.firstName}` : "Hello, User"}</h2>
         
         <p className="profile-rating">Welcome: {user.firstName} ★</p>
