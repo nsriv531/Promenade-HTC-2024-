@@ -13,6 +13,8 @@ import Interests from "./Components/Interests";
 import LocationList from "./Components/LocationList";
 import AuthProvider from "./Contexts/authContexts";
 import MyProfile from "./MyProfile"; // Import MyProfile component
+import MatchedUserPage from "./MatchedUserPage";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,6 +29,7 @@ root.render(
           <Route path="/interests" element={<Interests />} />
           <Route path="/profile" element={<MyProfile />} /> {/* Add profile route */}
           <Route path="/dashboard/locationSelect" element={<LocationList />} />
+          <Route path="/matched-users" element={<MatchedUserPage />} />
       </Routes>
       </BrowserRouter>
     </AuthProvider>

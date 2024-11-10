@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const LocationList = () => {
   const [filterInput, setFilterInput] = useState("");
   const [dataList, setDataList] = useState([]);
   const [startLocation, setStartLocation] = useState(null);
   const [endLocation, setEndLocation] = useState(null);
+  const navigate = useNavigate(); // React Router hook to navigate
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,10 +37,7 @@ const LocationList = () => {
 
   const handleContinue = () => {
     if (startLocation && endLocation) {
-      // Example action: redirect to another page or display a message
-      console.log("Proceeding with:", { startLocation, endLocation });
-      // You can redirect using react-router, for example:
-      // navigate("/next-page");
+      navigate("/matched-users", { state: { startLocation } });
     }
   };
 
@@ -107,6 +106,7 @@ const LocationList = () => {
           </p>
         )}
       </div>
+
       {/* Continue Button */}
       <div className="mt-4">
         <button
