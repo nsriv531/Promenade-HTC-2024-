@@ -10,9 +10,15 @@ import Footer from './Components/Footer';
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("trip");
   const [firstName, setFirstName] = useState(""); // Store the user's first name
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const navigate = useNavigate();
   const auth = getAuth();
   const db = getFirestore();
+
+  const handleNavigate = (path) => {
+    setIsTransitioning(true);
+    setTimeout(() => navigate(path), 1000); // Navigate after animation
+  }
 
   useEffect(() => {
     // Get the current user email
@@ -38,7 +44,7 @@ function Dashboard() {
 
   const handleClick = () => {
     // Perform login logic here, then navigate
-    navigate("/dashboard/locationSelect"); // Replace "/home" with your desired route
+    handleNavigate("/dashboard/locationSelect"); // Replace "/home" with your desired route
   };
 
   return (
@@ -54,11 +60,11 @@ function Dashboard() {
 
       <div className={`font-inter-medium grid grid-rows-2 place-items-center`}>
         <button
-          className={`text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan ${activeTab === "trip" ? "active" : ""}`}
+          className={`text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan ${activeTab === "trip" ? "active" : ""} ${isTransitioning ? "animate-LslideOut" : "animate-LslideIn"}`}
           onClick={handleClick}>
           Plan Your Trip...
         </button>
-        <div className="">
+        <div className={`${isTransitioning ? "animate-LslideOut" : "animate-LslideIn"}`}>
           <Footer />
         </div>
       </div>
