@@ -46,12 +46,26 @@ const MatchedUsersPage = () => {
     <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md bg-gradient-to-r from-lavender-pink to-light-cyan">
       <h2 className="text-lg font-bold mb-3">Matched Users</h2>
       {matchedUsers.length > 0 ? (
-        <ul>
+        <ul className="space-y-4">
           {matchedUsers.map((user, index) => (
-            <li key={index} className="mb-2">
-              <strong>User:</strong> {user.firstName} <br />
-              <strong>Starting Location:</strong> {startLocation.name} <br />
-              <strong>End Location:</strong> {user.endLocation}
+            <li
+              key={index}
+              className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-md"
+            >
+              <img
+                src={user.profilePicture}
+                alt={`${user.firstName}'s profile`}
+                className="w-16 h-16 rounded-full object-cover border-2 border-gray-300"
+              />
+              <div>
+                <p className="text-lg font-semibold">{user.firstName}</p>
+                <p>
+                  <strong>Starting Location:</strong> {startLocation.name}
+                </p>
+                <p>
+                  <strong>End Location:</strong> {user.endLocation}
+                </p>
+              </div>
             </li>
           ))}
         </ul>
