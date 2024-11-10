@@ -81,7 +81,18 @@ const MatchedUsersPage = () => {
               <strong>End Location:</strong> {user.endLocation} <br />
               <strong>Rating:</strong> {renderStarRating(user.userRating)} <br />
               <button
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="mt-2 px-4 py-2 text-white rounded transition duration-300"
+                style={{
+                  backgroundColor: '#ff94c2', // Lavender pink (adjust based on theme)
+                  backgroundImage: 'linear-gradient(90deg, #ff94c2, #a6e7ff)', // Pink to cyan gradient
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundImage = 'linear-gradient(90deg, #a6e7ff, #ff94c2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundImage = 'linear-gradient(90deg, #ff94c2, #a6e7ff)';
+                }}
                 onClick={() => handleSendInvite(user.firstName)}
               >
                 Send Invite
