@@ -8,7 +8,13 @@ const LocationList = () => {
   const [dataList, setDataList] = useState([]);
   const [startLocation, setStartLocation] = useState(null);
   const [endLocation, setEndLocation] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const navigate = useNavigate(); // React Router hook to navigate
+
+  const handleNavigate = (path) => {
+    setIsTransitioning(true);
+    setTimeout(() => navigate(path), 1000); // Navigate after animation
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +43,7 @@ const LocationList = () => {
 
   const handleContinue = () => {
     if (startLocation && endLocation) {
-      navigate("/matched-users", { state: { startLocation, endLocation } });
+      handleNavigate("/matched-users", { state: { startLocation, endLocation } });
     }
   };
 
@@ -64,17 +70,17 @@ const LocationList = () => {
         {filteredData.map((data) => (
           <li
             key={data.id}
-            className="flex items-center justify-between p-2 bg-white rounded border hover:bg-gray-50">
-            <span className="font-medium">{data.name}</span>
-            <div className="space-x-2">
+            className={`bg-opacity-45 flex items-center justify-between p-2 bg-white rounded border hover:bg-gray-50 ${isTransitioning ? "animate-RslideOut" : "animate-RslideIn"}`}>
+            <span className="font-inter-medium">{data.name}</span>
+            <div className="grid grid-rows-2 gap-1">
               <button
                 onClick={() => handleSelectStart(data)}
-                className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
+                className="px-3 py-1 bg-wenge text-white rounded">
                 Set as Start
               </button>
               <button
                 onClick={() => handleSelectEnd(data)}
-                className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600">
+                className="px-3 py-1 bg-green-500 text-white rounded">
                 Set as End
               </button>
             </div>
@@ -83,7 +89,7 @@ const LocationList = () => {
       </ul>
 
       {/* Display the selected start and end locations */}
-      <div className="mt-6 p-4 bg-white rounded shadow">
+      <div className={`mt-6 p-4 bg-white rounded shadow ${isTransitioning ? "animate-RslideOut" : "animate-RslideIn"}`}>
         <h2 className="text-lg font-bold mb-3">Selected Locations</h2>
         {startLocation && (
           <p className="mb-2">
