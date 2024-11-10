@@ -1,0 +1,56 @@
+/* MyProfile.css */
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+  }
+  
+  .profile-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .profile-card h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #8b5e83;
+  }
+  
+  .profile-rating {
+    font-size: 1.2em;
+    color: #ffb400;
+  }
+  
+  .profile-card h3 {
+    margin-top: 20px;
+    color: #3498db;
+  }
+  
+  .profile-interests {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  .profile-interests li {
+    background-color: #e0e4e7;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    color: #333;
+  }
+  
+  .profile-loading {
+    font-size: 1.5em;
+    text-align: center;
+    color: #8b5e83;
+  }
+  
