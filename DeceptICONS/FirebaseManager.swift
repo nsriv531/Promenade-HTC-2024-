@@ -96,10 +96,7 @@ class FirebaseManager: ObservableObject {
             print("Failed to start promenade: \(error)")
         }
 
-        // Remove sent invites for the promenade
-        for invite in sentInvites where invite.status == .accepted {
-            await unsendInvite(invite)
-        }
+        await removeAllSentInvites()
 
         promenadeUsers = participants
         currentlyInPromenade = true
@@ -115,6 +112,7 @@ class FirebaseManager: ObservableObject {
             }
         }
 
+        promenadeUsers.users.removeAll(where: { $0.email == currentUserEmail })
         currentlyInPromenade = false
         isReviewingPromenade = true
     }
@@ -126,7 +124,7 @@ class FirebaseManager: ObservableObject {
         }
 
         isReviewingPromenade = false
-        promenadeUsers = .init(users: [])
+        promenadeUsers.users = []
     }
 }
 
@@ -155,7 +153,20 @@ extension FirebaseManager {
         }
 
         try? await reference?.reference.delete()
-        await fetchUsers()
+    }
+
+    func removeAllSentInvites() async {
+        sentInvites = []
+
+        guard let documents = try? await db.collection("invites").getDocuments() else {
+            return
+        }
+
+        for document in documents.documents {
+            if let decodedInvite = try? document.data(as: Invite.self), decodedInvite.fromUser.email == account?.email {
+                try? await document.reference.delete()
+            }
+        }
     }
 
     func replyToInvite(_ invite: Invite, _ status: Invite.InviteStatus) async {
@@ -180,6 +191,22 @@ extension FirebaseManager {
 
         try? reference?.reference.setData(from: newValue)
         await fetchReceivedInvites()
+    }
+
+    func updateInvite(_ invite: Invite, to newInvite: Invite) async {
+        guard let documents = try? await db.collection("invites").getDocuments() else {
+            return
+        }
+
+        let reference = documents.documents.first { item in
+            guard let data = try? item.data(as: Invite.self) else {
+                return false
+            }
+            return data == invite
+        }
+
+        try? reference?.reference.setData(from: newInvite)
+        await fetchSentInvites()
     }
 }
 

@@ -23,7 +23,7 @@ struct SentInvitesView: View {
             }
             .padding()
         }
-        .refreshable(action: firebase.fetchSentInvites)
+        .refreshable(action: refresh)
         .modifier(BackgroundMeshModifier())
         .task {
             await firebase.fetchSentInvites()
@@ -42,6 +42,24 @@ struct SentInvitesView: View {
                 }
             }
             .padding()
+        }
+    }
+
+    func refresh() async {
+        await firebase.fetchSentInvites()
+
+        let shouldAcceptInvite = Bool.random()
+        if shouldAcceptInvite,
+           let invite = firebase.sentInvites.randomElement() {
+            let newInvite = Invite(
+                fromUser: invite.fromUser,
+                toUser: invite.toUser,
+                initialLocation: invite.initialLocation,
+                finalLocation: invite.finalLocation,
+                status: .accepted
+            )
+
+            await firebase.updateInvite(invite, to: newInvite)
         }
     }
 }
