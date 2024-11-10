@@ -1,0 +1,379 @@
+[
+  {
+    "genderIdentity" : "Female",
+    "languages" : [
+      "English",
+      "French"
+    ],
+    "ageRange" : "range25_29",
+    "userRating" : 4.5,
+    "email" : "emma.green@gmail.com",
+    "pronouns" : "she\/her",
+    "interests" : [
+      "natureAndOutdoors",
+      "photography",
+      "travel",
+      "environmentalIssues"
+    ],
+    "profilePicture" : "https:\/\/example.com\/emma_green.jpg",
+    "firstName" : "Emma"
+  },
+  {
+    "email" : "alex.rivera@gmail.com",
+    "pronouns" : "they\/them",
+    "ageRange" : "range35Plus",
+    "profilePicture" : "https:\/\/example.com\/alex_rivera.jpg",
+    "languages" : [
+      "English",
+      "Spanish"
+    ],
+    "genderIdentity" : "Non-binary",
+    "interests" : [
+      "artAndDesign",
+      "music",
+      "localCommunityEvents",
+      "foodAndCooking"
+    ],
+    "userRating" : 3.1,
+    "firstName" : "Alex"
+  },
+  {
+    "genderIdentity" : "Male",
+    "firstName" : "Liam",
+    "languages" : [
+      "English"
+    ],
+    "pronouns" : "he\/him",
+    "profilePicture" : "https:\/\/example.com\/liam_smith.jpg",
+    "email" : "liam.smith@gmail.com",
+    "interests" : [
+      "sports",
+      "fitnessAndExercise",
+      "technology",
+      "careerAndProfessionalDevelopment"
+    ],
+    "userRating" : 4,
+    "ageRange" : "range18_24"
+  },
+  {
+    "firstName" : "Sophia",
+    "languages" : [
+      "English",
+      "Mandarin"
+    ],
+    "profilePicture" : "https:\/\/example.com\/sophia_chen.jpg",
+    "genderIdentity" : "Female",
+    "ageRange" : "range25_29",
+    "interests" : [
+      "booksAndLiterature",
+      "moviesAndTVShows",
+      "travel",
+      "artAndDesign"
+    ],
+    "email" : "sophia.chen@gmail.com",
+    "pronouns" : "she\/her",
+    "userRating" : 4.1
+  },
+  {
+    "profilePicture" : "https:\/\/example.com\/noah_mueller.jpg",
+    "genderIdentity" : "Male",
+    "userRating" : 4.8,
+    "email" : "noah.mueller@gmail.com",
+    "interests" : [
+      "technology",
+      "environmentalIssues",
+      "photography",
+      "localCommunityEvents"
+    ],
+    "firstName" : "Noah",
+    "ageRange" : "range35Plus",
+    "pronouns" : "he\/him",
+    "languages" : [
+      "English",
+      "German"
+    ]
+  },
+  {
+    "genderIdentity" : "Female",
+    "firstName" : "Olivia",
+    "profilePicture" : "https:\/\/example.com\/olivia_rossi.jpg",
+    "pronouns" : "she\/her",
+    "userRating" : 3.9,
+    "interests" : [
+      "foodAndCooking",
+      "travel",
+      "artAndDesign",
+      "music"
+    ],
+    "ageRange" : "range25_29",
+    "languages" : [
+      "English",
+      "Italian"
+    ],
+    "email" : "olivia.rossi@email.com"
+  },
+  {
+    "pronouns" : "he\/him",
+    "ageRange" : "range18_24",
+    "profilePicture" : "https:\/\/example.com\/ethan_tanaka.jpg",
+    "userRating" : 4.4,
+    "firstName" : "Ethan",
+    "email" : "ethan.tanaka@email.com",
+    "interests" : [
+      "technology",
+      "moviesAndTVShows",
+      "sports",
+      "booksAndLiterature"
+    ],
+    "genderIdentity" : "Male",
+    "languages" : [
+      "English",
+      "Japanese"
+    ]
+  },
+  {
+    "email" : "ava.hassan@email.com",
+    "pronouns" : "she\/her",
+    "profilePicture" : "https:\/\/example.com\/ava_hassan.jpg",
+    "genderIdentity" : "Female",
+    "interests" : [
+      "careerAndProfessionalDevelopment",
+      "environmentalIssues",
+      "localCommunityEvents",
+      "fitnessAndExercise"
+    ],
+    "ageRange" : "range35Plus",
+    "firstName" : "Ava",
+    "userRating" : 4.9,
+    "languages" : [
+      "English",
+      "Arabic"
+    ]
+  },
+  {
+    "firstName" : "Lucas",
+    "profilePicture" : "https:\/\/example.com\/lucas_silva.jpg",
+    "email" : "lucas.silva@email.com",
+    "ageRange" : "range25_29",
+    "pronouns" : "he\/him",
+    "userRating" : 1.2,
+    "genderIdentity" : "Male",
+    "interests" : [
+      "sports",
+      "music",
+      "travel",
+      "foodAndCooking"
+    ],
+    "languages" : [
+      "English",
+      "Portuguese"
+    ]
+  },
+  {
+    "email" : "mia.park@email.com",
+    "pronouns" : "she\/her",
+    "genderIdentity" : "Female",
+    "interests" : [
+      "photography",
+      "artAndDesign",
+      "technology",
+      "booksAndLiterature"
+    ],
+    "profilePicture" : "https:\/\/example.com\/mia_park.jpg",
+    "ageRange" : "range18_24",
+    "firstName" : "Mia",
+    "languages" : [
+      "English",
+      "Korean"
+    ],
+    "userRating" : 5
+  },
+  {
+    "languages" : [
+      "English"
+    ],
+    "profilePicture" : "https:\/\/example.com\/jackson_brown.jpg",
+    "ageRange" : "range35Plus",
+    "email" : "jackson.brown@email.com",
+    "genderIdentity" : "Male",
+    "interests" : [
+      "fitnessAndExercise",
+      "natureAndOutdoors",
+      "careerAndProfessionalDevelopment",
+      "technology"
+    ],
+    "pronouns" : "he\/him",
+    "firstName" : "Jackson",
+    "userRating" : 4.3
+  },
+  {
+    "pronouns" : "she\/her",
+    "profilePicture" : "https:\/\/example.com\/zoe_dubois.jpg",
+    "ageRange" : "range25_29",
+    "email" : "zoe.dubois@email.com",
+    "interests" : [
+      "travel",
+      "environmentalIssues",
+      "localCommunityEvents",
+      "booksAndLiterature"
+    ],
+    "languages" : [
+      "English",
+      "French",
+      "Spanish"
+    ],
+    "firstName" : "Zoe",
+    "userRating" : 4.9,
+    "genderIdentity" : "Female"
+  },
+  {
+    "ageRange" : "range18_24",
+    "email" : "mason.zhang@email.com",
+    "genderIdentity" : "Male",
+    "interests" : [
+      "technology",
+      "sports",
+      "moviesAndTVShows",
+      "foodAndCooking"
+    ],
+    "languages" : [
+      "English",
+      "Mandarin"
+    ],
+    "pronouns" : "he\/him",
+    "userRating" : 3.2,
+    "profilePicture" : "https:\/\/example.com\/mason_zhang.jpg",
+    "firstName" : "Mason"
+  },
+  {
+    "pronouns" : "she\/her",
+    "languages" : [
+      "English",
+      "Swedish"
+    ],
+    "userRating" : 3.8,
+    "genderIdentity" : "Female",
+    "profilePicture" : "https:\/\/example.com\/harper_andersson.jpg",
+    "email" : "harper.andersson@email.com",
+    "ageRange" : "range25_29",
+    "interests" : [
+      "natureAndOutdoors",
+      "photography",
+      "artAndDesign",
+      "environmentalIssues"
+    ],
+    "firstName" : "Harper"
+  },
+  {
+    "firstName" : "Leo",
+    "genderIdentity" : "Male",
+    "interests" : [
+      "music",
+      "careerAndProfessionalDevelopment",
+      "technology",
+      "localCommunityEvents"
+    ],
+    "languages" : [
+      "English",
+      "Russian"
+    ],
+    "ageRange" : "range35Plus",
+    "pronouns" : "he\/him",
+    "userRating" : 4.2,
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
+    "email" : "leo.ivanov@email.com"
+  },
+  {
+    "userRating" : 1.1,
+    "genderIdentity" : "Male",
+    "firstName" : "Nikhil",
+    "email" : "nsriv531@mtroyal.ca",
+    "interests" : [
+      "music",
+      "careerAndProfessionalDevelopment",
+      "technology",
+      "localCommunityEvents"
+    ],
+    "languages" : [
+      "English",
+      "Gujarati"
+    ],
+    "pronouns" : "he\/him",
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
+    "ageRange" : "range35Plus"
+  },
+  {
+    "ageRange" : "range18_24",
+    "email" : "shotasushi@gmail.com",
+    "languages" : [
+      "English",
+      "Japanese"
+    ],
+    "interests" : [
+      "careerAndProfessionalDevelopment",
+      "technology",
+      "artAndDesign"
+    ],
+    "userRating" : 4.8,
+    "firstName" : "kai",
+    "pronouns" : "he\/him",
+    "genderIdentity" : "Male",
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg"
+  },
+  {
+    "genderIdentity" : "Female",
+    "interests" : [
+      "music",
+      "careerAndProfessionalDevelopment",
+      "technology",
+      "artAndDesign"
+    ],
+    "userRating" : 5,
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
+    "ageRange" : "range18_24",
+    "firstName" : "Dara",
+    "languages" : [
+      "English"
+    ],
+    "email" : "dara@gmail.com",
+    "pronouns" : "she\/her"
+  },
+  {
+    "interests" : [
+      "careerAndProfessionalDevelopment",
+      "technology",
+      "artAndDesign"
+    ],
+    "email" : "jaunie@gmail.com",
+    "languages" : [
+      "English",
+      "French"
+    ],
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
+    "pronouns" : "he\/him",
+    "genderIdentity" : "Male",
+    "userRating" : 4.5,
+    "firstName" : "Jaunie",
+    "ageRange" : "range18_24"
+  },
+  {
+    "languages" : [
+      "English",
+      "French",
+      "Japanese",
+      "Latin"
+    ],
+    "email" : "adly.ryo.azim@gmail.com",
+    "interests" : [
+      "careerAndProfessionalDevelopment",
+      "technology",
+      "artAndDesign"
+    ],
+    "userRating" : 3.8,
+    "profilePicture" : "https:\/\/example.com\/leo_ivanov.jpg",
+    "genderIdentity" : "Male",
+    "ageRange" : "range18_24",
+    "firstName" : "Adly",
+    "pronouns" : "he\/him"
+  }
+]
