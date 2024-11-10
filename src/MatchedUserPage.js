@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 
 const MatchedUsersPage = () => {
   const location = useLocation();
-  const { startLocation, endLocation } = location.state || {}; // Access start and end locations passed from LocationList
+  const { startLocation, endLocation } = location.state || {};
   const [matchedUsers, setMatchedUsers] = useState([]);
 
   useEffect(() => {
@@ -42,30 +42,50 @@ const MatchedUsersPage = () => {
     }
   }, [startLocation, endLocation]);
 
+  // Function to handle sending an invite
+  const handleSendInvite = (userName) => {
+    alert(`Invite sent to ${userName}`);
+  };
+
+  // Function to render star rating based on userRating
+  const renderStarRating = (rating) => {
+    const filledStars = Math.round(rating);
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < filledStars) {
+        stars.push(<span key={i}>★</span>); // Filled star
+      } else {
+        stars.push(<span key={i}>☆</span>); // Empty star
+      }
+    }
+    return <span className="text-yellow-500">{stars}</span>;
+  };
+
   return (
     <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md bg-gradient-to-r from-lavender-pink to-light-cyan">
       <h2 className="text-lg font-bold mb-3">Matched Users</h2>
       {matchedUsers.length > 0 ? (
-        <ul className="space-y-4">
+        <ul>
           {matchedUsers.map((user, index) => (
-            <li
-              key={index}
-              className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-md"
-            >
-              <img
-                src={user.profilePicture}
-                alt={`${user.firstName}'s profile`}
-                className="w-16 h-16 rounded-full object-cover border-2 border-gray-300"
-              />
-              <div>
-                <p className="text-lg font-semibold">{user.firstName}</p>
-                <p>
-                  <strong>Starting Location:</strong> {startLocation.name}
-                </p>
-                <p>
-                  <strong>End Location:</strong> {user.endLocation}
-                </p>
-              </div>
+            <li key={index} className="mb-4 border-b pb-2">
+              {/* Display profile picture */}
+              {user.profilePicture && (
+                <img
+                  src={user.profilePicture}
+                  alt={`${user.firstName}'s profile`}
+                  className="w-16 h-16 rounded-full mb-2"
+                />
+              )}
+              <strong>User:</strong> {user.firstName} <br />
+              <strong>Starting Location:</strong> {startLocation.name} <br />
+              <strong>End Location:</strong> {user.endLocation} <br />
+              <strong>Rating:</strong> {renderStarRating(user.userRating)} <br />
+              <button
+                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                onClick={() => handleSendInvite(user.firstName)}
+              >
+                Send Invite
+              </button>
             </li>
           ))}
         </ul>
