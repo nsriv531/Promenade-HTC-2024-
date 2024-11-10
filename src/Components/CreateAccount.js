@@ -1,30 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function CreateAccount() {
-  const [firstName, setFirstName] = useState('');
-  const [pronouns, setPronouns] = useState('');
-  const [email, setEmail] = useState('');
-  const [ageRange, setAgeRange] = useState('');
-  const [genderIdentity, setGenderIdentity] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [pronouns, setPronouns] = useState("");
+  const [email, setEmail] = useState("");
+  const [ageRange, setAgeRange] = useState("");
+  const [genderIdentity, setGenderIdentity] = useState("");
   const [interests, setInterests] = useState([]);
 
-  const interestOptions = ['Technology', 'Sports', 'Music', 'Travel', 'Reading', 'Gaming'];
+  const interestOptions = [
+    "Technology",
+    "Sports",
+    "Music",
+    "Travel",
+    "Reading",
+    "Gaming",
+  ];
 
   const handleInterestChange = (interest) => {
-    setInterests((prev) => 
-      prev.includes(interest) ? prev.filter((i) => i !== interest) : [...prev, interest]
+    setInterests((prev) =>
+      prev.includes(interest)
+        ? prev.filter((i) => i !== interest)
+        : [...prev, interest]
     );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    e.preventDefault();
+    if (username === "admin" && password === "password") {
+      navigate("/dashboard"); // Redirect to dashboard if credentials are correct
+    } else {
+      alert("Invalid credentials"); // Alert if credentials are incorrect
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-8 max-w-lg mx-auto rounded-lg shadow-lg">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white p-8 max-w-lg mx-auto rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Create Account</h2>
-      
+
       <label className="block mb-4 font-bold text-gray-700">
         First Name:
         <input
@@ -35,7 +52,7 @@ function CreateAccount() {
           className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         />
       </label>
-      
+
       <label className="block mb-4 font-bold text-gray-700">
         Pronouns:
         <input
@@ -63,8 +80,7 @@ function CreateAccount() {
           value={ageRange}
           onChange={(e) => setAgeRange(e.target.value)}
           required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-        >
+          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
           <option value="">Select Age Range</option>
           <option value="18-24">18-24</option>
           <option value="25-29">25-29</option>
@@ -103,8 +119,7 @@ function CreateAccount() {
 
       <button
         type="submit"
-        className="w-full bg-indigo-600 text-white py-2 rounded-md font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
+        className="w-full bg-indigo-600 text-white py-2 rounded-md font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
         Create Account
       </button>
     </form>
