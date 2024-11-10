@@ -109,6 +109,38 @@ struct User: Identifiable, Hashable, Codable, Defaults.Serializable {
             }
         }
     }
+
+    @ViewBuilder
+    func profileView() -> some View {
+        AsyncImage(url: profilePicture) { stage in
+            switch stage {
+            case .success(let image):
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            case .failure(_):
+                AsyncImage(
+                    url: URL(string: "https://thispersondoesnotexist.com/")!,
+                    content: { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    },
+                    placeholder: {
+                        Rectangle()
+                            .fill(.secondary)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                )
+                .clipShape(.circle)
+            default:
+                Rectangle()
+                    .fill(.secondary)
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+        .clipShape(.circle)
+    }
 }
 
 struct UserList: Identifiable, Hashable, Codable, Defaults.Serializable {

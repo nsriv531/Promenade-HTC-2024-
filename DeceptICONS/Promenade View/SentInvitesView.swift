@@ -27,6 +27,13 @@ struct SentInvitesView: View {
         .modifier(BackgroundMeshModifier())
         .task {
             await firebase.fetchSentInvites()
+            try? await Task.sleep(for: .seconds(2))
+
+            let shuffled = firebase.sentInvites.shuffled()
+            for invite in shuffled {
+                await approve(invite)
+                try? await Task.sleep(for: .milliseconds(.random(in: 100...2000)))
+            }
         }
         .overlay {
             VStack {
@@ -47,20 +54,18 @@ struct SentInvitesView: View {
 
     func refresh() async {
         await firebase.fetchSentInvites()
+    }
 
-        let shouldAcceptInvite = Bool.random()
-        if shouldAcceptInvite,
-           let invite = firebase.sentInvites.randomElement() {
-            let newInvite = Invite(
-                fromUser: invite.fromUser,
-                toUser: invite.toUser,
-                initialLocation: invite.initialLocation,
-                finalLocation: invite.finalLocation,
-                status: .accepted
-            )
+    func approve(_ invite: Invite) async {
+        let newInvite = Invite(
+            fromUser: invite.fromUser,
+            toUser: invite.toUser,
+            initialLocation: invite.initialLocation,
+            finalLocation: invite.finalLocation,
+            status: .accepted
+        )
 
-            await firebase.updateInvite(invite, to: newInvite)
-        }
+        await firebase.updateInvite(invite, to: newInvite)
     }
 }
 
@@ -77,20 +82,7 @@ extension SentInvitesView {
             } label: {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 12) {
-                        AsyncImage(
-                            url: URL(string: "https://thispersondoesnotexist.com/")!,
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            },
-                            placeholder: {
-                                Rectangle()
-                                    .fill(.secondary)
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                        )
-                        .clipShape(.rect(cornerRadius: 10))
+                        invite.toUser.profileView()
 
                         VStack(alignment: .leading) {
                             Text(invite.toUser.firstName)

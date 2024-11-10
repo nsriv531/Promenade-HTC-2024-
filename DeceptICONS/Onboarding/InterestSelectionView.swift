@@ -11,6 +11,11 @@ struct InterestSelectionView: View {
     @ObservedObject var firebaseManager: FirebaseManager = .shared
     @EnvironmentObject var model: AppModel
     @State var interests: [User.Interest] = FirebaseManager.shared.account?.interests ?? []
+    let showContinue: Bool
+
+    init(showContinue: Bool = true) {
+        self.showContinue = showContinue
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -48,17 +53,19 @@ struct InterestSelectionView: View {
 
             Spacer()
 
-            Button("Continue") {
-                Task {
-                    if var user = firebaseManager.account {
-                        user.interests = interests
-                        await firebaseManager.updateMyAccount(to: user)
+            if showContinue {
+                Button("Continue") {
+                    Task {
+                        if var user = firebaseManager.account {
+                            user.interests = interests
+                            await firebaseManager.updateMyAccount(to: user)
+                        }
+                        
+                        model.nextPage()
                     }
-
-                    model.nextPage()
                 }
+                .buttonStyle(IntroButtonStyle())
             }
-            .buttonStyle(IntroButtonStyle())
         }
         .padding()
         .modifier(BackgroundMeshModifier())

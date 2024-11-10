@@ -30,9 +30,9 @@ struct HomeView: View {
         func view() -> some View {
             switch self {
             case .promenade:
-                PromenadeView()
+                LocationChooserView()
             case .profile:
-                Text(name)
+                ProfileView()
             }
         }
     }

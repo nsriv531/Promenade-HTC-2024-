@@ -122,20 +122,7 @@ extension MatchFinderView {
             } label: {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 12) {
-                        AsyncImage(
-                            url: URL(string: "https://thispersondoesnotexist.com/")!,
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            },
-                            placeholder: {
-                                Rectangle()
-                                    .fill(.secondary)
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                        )
-                        .clipShape(.rect(cornerRadius: 10))
+                        user.profileView()
 
                         VStack(alignment: .leading) {
                             Text(user.firstName)

@@ -17,7 +17,7 @@ struct ActivePromenadeView: View {
                     .exposureFont()
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text("Your team is comprised of:")
+                Text("Your Promenade is with:")
                     .interFont()
 
                 ForEach(firebase.promenadeUsers.users) { user in
@@ -26,7 +26,7 @@ struct ActivePromenadeView: View {
 
                 Spacer()
 
-                Button("Finish Promenade") {
+                Button("I arrived safely") {
                     Task {
                         await firebase.endPromenade()
                     }
@@ -65,20 +65,7 @@ extension ActivePromenadeView {
 
         var body: some View {
             HStack(spacing: 12) {
-                AsyncImage(
-                    url: URL(string: "https://thispersondoesnotexist.com/")!,
-                    content: { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    },
-                    placeholder: {
-                        Rectangle()
-                            .fill(.secondary)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                )
-                .clipShape(.rect(cornerRadius: 10))
+                user.profileView()
 
                 VStack(alignment: .leading) {
                     Text(user.firstName)
@@ -131,20 +118,7 @@ extension ActivePromenadeView {
             } label: {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 12) {
-                        AsyncImage(
-                            url: URL(string: "https://thispersondoesnotexist.com/")!,
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            },
-                            placeholder: {
-                                Rectangle()
-                                    .fill(.secondary)
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                        )
-                        .clipShape(.rect(cornerRadius: 10))
+                        user.profileView()
 
                         VStack(alignment: .leading) {
                             Text(user.firstName)
