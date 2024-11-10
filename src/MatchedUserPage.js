@@ -51,7 +51,7 @@ const MatchedUsersPage = () => {
   }, [startLocation, endLocation]);
 
   return (
-    <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
+    <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md bg-gradient-to-r from-lavender-pink to-light-cyan">
       <h2 className="text-lg font-bold mb-3">Matched Users</h2>
       {matchedUsers.length > 0 ? (
         <ul>

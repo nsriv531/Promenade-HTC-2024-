@@ -34,7 +34,7 @@ const LocationList = () => {
     setEndLocation(data);
     localStorage.setItem("endLocation", JSON.stringify(data));
   };
-  
+
   const handleContinue = () => {
     if (startLocation && endLocation) {
       navigate("/matched-users", { state: { startLocation, endLocation } });
@@ -48,7 +48,7 @@ const LocationList = () => {
   );
 
   return (
-    <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
+    <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md bg-gradient-to-r from-lavender-pink to-light-cyan">
       <p className="mb-4">
         <input
           id="filter"
