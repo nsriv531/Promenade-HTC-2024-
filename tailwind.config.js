@@ -14,6 +14,7 @@ module.exports = {
       fontFamily: {
         custom: ['ExposureTrial', 'sans-serif'],
         customi: ['ExposureTrial-i', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       }
     },
   },
