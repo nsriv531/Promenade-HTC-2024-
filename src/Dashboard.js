@@ -6,6 +6,7 @@ import { getFirestore, collection, query, where, getDocs } from "firebase/firest
 
 import "./Styling/Dashboard.css";
 import Footer from './Components/Footer';
+import BackButton from './Components/BackButton';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("trip");
@@ -43,6 +44,10 @@ function Dashboard() {
 
   return (
     <div className="h-screen flex flex-col items-center gap-6 bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <div className="w-full flex items-center">
+        <BackButton /> {/* Add BackButton here */}
+      </div>
+
       <div className="text-left text-wenge pl-4">
         <h2 className="font-customi text-5xl py-6">
           Promenade...
@@ -62,24 +67,6 @@ function Dashboard() {
           <Footer />
         </div>
       </div>
-    </div>
-  );
-}
-
-function PlanYourTrip() {
-  return (
-    <div>
-      <h3>Plan Your Trip</h3>
-      <p>Trip planning tools will go here.</p>
-    </div>
-  );
-}
-
-function CheckYourProfile() {
-  return (
-    <div>
-      <h3>Your Profile</h3>
-      <p>Profile details and settings will go here.</p>
     </div>
   );
 }
