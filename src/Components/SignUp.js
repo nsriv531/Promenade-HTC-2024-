@@ -514,14 +514,17 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-
+          <div className="text-center">
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-colors font-medium"
+            className="font-inter text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan"
             onClick={handleLogin}>
             Next
           </button>
-        </form>
+        
+
+          </div>
+          </form>
       </div>
     </div>
   );
