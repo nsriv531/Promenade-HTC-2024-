@@ -24,7 +24,7 @@ function LoggingIn() {
 
   const handleNavigate = (path) => {
     setIsTransitioning(true);
-    setTimeout(() => navigate(path), 500); // Navigate after animation
+    setTimeout(() => navigate(path), 1000); // Navigate after animation
   }
 
   // const emailSubmit = async (e) => {
@@ -48,9 +48,9 @@ function LoggingIn() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
+    <div className={`min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan ${isTransitioning ? "animate-fadeOut" : ""}`}>
       { userLoggedIn && (<Navigate to={'/dashboard'} replace={true} />) }
-      <form onSubmit={handleSubmit} className={`bg-white p-8 max-w-lg mx-auto rounded-lg shadow-lg ${isTransitioning ? "animate-fadeOut" : "animate-slideIn"}`}>
+      <form onSubmit={handleSubmit} className={`bg-white p-8 max-w-lg mx-auto rounded-lg shadow-lg ${isTransitioning ? "" : "animate-slideIn"}`}>
         <h2 className="text-2xl font-bold mb-6 text-gray-800">Login</h2>
 
         <label className="block mb-4 font-bold text-gray-700">
