@@ -42,34 +42,26 @@ function Dashboard() {
   };
 
   return (
-    <div className="dashboard bg-gradient-to-r from-lavender-pink to-light-cyan">
-      <div className="dashboard-header">
-        <button className="left-button">Left Button</button> {/* Placeholder button */}
-        <h2>{firstName ? `Hello, ${firstName}` : "User Dashboard"}</h2>
-        <div className="profile-icon">👤</div> {/* Profile icon */}
+    <div className="h-screen flex flex-col items-center gap-6 bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <div className="text-left text-wenge pl-4">
+        <h2 className="font-customi text-5xl py-6">
+          Promenade...
+        </h2>
+        <h1 className="font-inter-medium text-2xl">
+          Safety first.
+        </h1>
       </div>
 
-      <div className="tab-buttons">
+      <div className={`font-inter-medium grid grid-rows-2 place-items-center`}>
         <button
-          className={`tab-button ${activeTab === "trip" ? "active" : ""}`}
-          onClick={handleClick}
-        >
-          Plan Your Trip
+          className={`text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan ${activeTab === "trip" ? "active" : ""}`}
+          onClick={handleClick}>
+          Plan Your Trip...
         </button>
-        <button
-          className={`tab-button ${activeTab === "profile" ? "active" : ""}`}
-          onClick={() => setActiveTab("profile")}
-        >
-          Check Your Profile
-        </button>
+        <div className="">
+          <Footer />
+        </div>
       </div>
-
-      <div className="tab-content">
-        {activeTab === "trip" && <PlanYourTrip />}
-        {activeTab === "profile" && <CheckYourProfile />}
-      </div>
-
-      <Footer />
     </div>
   );
 }
