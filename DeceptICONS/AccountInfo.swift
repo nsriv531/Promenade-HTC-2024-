@@ -8,7 +8,9 @@
 import SwiftUI
 import Defaults
 
-struct AccountInfo: Codable, Defaults.Serializable {
+struct AccountInfo: Identifiable, Codable, Defaults.Serializable {
+    var id: String { email }
+
     var firstName: String
     var pronouns: String
     var languages: [String]
@@ -42,7 +44,7 @@ struct AccountInfo: Codable, Defaults.Serializable {
         self.interests = interests
         self.userRating = userRating
         if preferredLocations.isEmpty {
-            self.preferredLocations = Location.all.shuffled()[0..<3].map { $0 }
+            self.preferredLocations = Location.all.shuffled().prefix(10).map { $0 }
         } else {
             self.preferredLocations = preferredLocations
         }

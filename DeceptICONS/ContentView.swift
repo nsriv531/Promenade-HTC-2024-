@@ -25,6 +25,17 @@ struct ContentView: View {
 //
 //                print(jsonString)
 //            }
+            .onAppear {
+                let users = Location.all
+
+                // encode to JSON array
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .prettyPrinted
+                let data = try! encoder.encode(users)
+                let jsonString = String(data: data, encoding: .utf8)!
+
+                print(jsonString)
+            }
     }
 }
 

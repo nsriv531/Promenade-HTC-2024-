@@ -20,11 +20,11 @@ struct AccountCreationView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Create Account")
-                .exposureTitle()
-
             Text("Step into a Promenade.")
-                .interSubheadline()
+                .exposureFont()
+
+            Text("Create an account.")
+                .interFont()
 
             TextField("First Name", text: $firstName)
                 .modifier(InputModifier())
@@ -76,24 +76,7 @@ struct AccountCreationView: View {
             .buttonStyle(IntroButtonStyle())
         }
         .padding()
-        .background {
-            MeshGradient(
-                width: 3, height: 3,
-                points: [
-                    [0.0, 0.0], [0.5, 0], [1.0, 0.0],
-                    [0.0, 0.5], [0.6, 0.5], [1.0, 0.5],
-                    [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
-                ],
-                colors: [
-                    .background, .thistle, .orchidPink,
-                    .orchidPink, .thistle, .background,
-                    .lavenderPink, .thistle, .lavenderPink
-                ],
-                smoothsColors: true,
-                colorSpace: .perceptual
-            )
-            .ignoresSafeArea()
-        }
+        .modifier(BackgroundMeshModifier())
     }
 }
 

@@ -207,7 +207,7 @@ extension AccountInfo {
         pronouns: "he/him",
         languages: ["English", "Japanese"],
         email: "shotasushi@gmail.com",
-        profilePicture: URL(string: "https://example.com/leo_ivanov.jpg")!,
+        profilePicture: URL(string: "https://github.com/mrkai77.png?size=200")!,
         ageRange: .range18_24,
         genderIdentity: "Male",
         interests: [.careerAndProfessionalDevelopment, .technology, .artAndDesign],

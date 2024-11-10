@@ -30,7 +30,7 @@ struct HomeView: View {
         func view() -> some View {
             switch self {
             case .start:
-                Text(name)
+                LocationChooserView()
             case .profile:
                 Text(name)
             }

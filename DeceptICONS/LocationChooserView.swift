@@ -6,74 +6,82 @@
 //
 
 import SwiftUI
+import Defaults
+import Kingfisher
 
 struct LocationChooserView: View {
-    let initialLocation: Location? = nil
-    let finalLocation: Location? = nil
+    @State private var initialLocation: Location? = nil
+    @State private var finalLocation: Location? = nil
+    @Default(.account) var me
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 12) {
                 Group {
                     Text("Promenade...")
-                        .exposureTitle()
+                        .exposureFont()
                     
                     Text("Start a new adventure.")
-                        .interSubheadline()
+                        .interFont()
                 }
 
                 Spacer()
                     .frame(height: 12)
 
-                NavigationLink {
-                    ContentView()
-                } label: {
-                    Button("Choose Starting Destination...") {
-
-                    }
-                    .buttonStyle(IntroButtonStyle())
+                NavigationLink(initialLocation?.name ?? "Choose Starting Destination...") {
+                    LocationSearchView(selectedLocation: $initialLocation)
                 }
+                .buttonStyle(IntroButtonStyle())
 
-                NavigationLink {
-                    ContentView()
-                } label: {
-                    Button("Choose Final Destination...") {
-
-                    }
-                    .buttonStyle(IntroButtonStyle())
+                NavigationLink(finalLocation?.name ?? "Choose Final Destination...") {
+                    LocationSearchView(selectedLocation: $finalLocation)
                 }
+                .buttonStyle(IntroButtonStyle())
 
                 Spacer()
                 
-                Button("Continue") {
-                    //                model.nextPage()
+                NavigationLink("Continue") {
+                    if let me, let initialLocation, let finalLocation {
+                        MatchFinderView(me: me, startingLocation: initialLocation, finalLocation: finalLocation)
+                    }
                 }
                 .buttonStyle(IntroButtonStyle())
-                .disabled(initialLocation == nil || finalLocation == nil)
+                .disabled(me == nil || initialLocation == nil || finalLocation == nil)
             }
             .padding()
-            .background {
-                MeshGradient(
-                    width: 3, height: 3,
-                    points: [
-                        [0.0, 0.0], [0.5, 0], [1.0, 0.0],
-                        [0.0, 0.5], [0.6, 0.5], [1.0, 0.5],
-                        [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
-                    ],
-                    colors: [
-                        .background, .thistle, .orchidPink,
-                        .orchidPink, .thistle, .background,
-                        .lavenderPink, .thistle, .lavenderPink
-                    ],
-                    smoothsColors: true,
-                    colorSpace: .perceptual
-                )
-                .ignoresSafeArea()
-            }
+            .modifier(BackgroundMeshModifier())
         }
     }
 }
 
-#Preview {
-    LocationChooserView()
+struct LocationSearchView: View {
+    @Environment(\.presentationMode) var presentationMode
+
+    let locations = Location.all
+    @State private var searchText = ""
+    @Binding var selectedLocation: Location?
+
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(searchResults, id: \.self) { location in
+                    Button {
+                        selectedLocation = location
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text(location.name)
+                    }
+                }
+            }
+        }
+        .searchable(text: $searchText)
+    }
+
+    var searchResults: [Location] {
+        if searchText.isEmpty {
+            return locations
+        } else {
+            return locations.filter { $0.name.contains(searchText) }
+        }
+    }
 }

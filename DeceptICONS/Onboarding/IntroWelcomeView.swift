@@ -17,10 +17,11 @@ struct IntroWelcomeView: View {
 
             Group {
                 Text("Promenade")
-                    .exposureTitle()
+                    .exposureFont()
 
                 Text("Walk together, anytime.")
-                    .interSubheadline()
+                    .interFont()
+                    .offset(y: showIntro ? 0 : 10)
             }
             .blur(radius: showIntro ? 0 : 10)
             .opacity(showIntro ? 1 : 0)
@@ -34,24 +35,7 @@ struct IntroWelcomeView: View {
             .buttonStyle(IntroButtonStyle())
         }
         .padding()
-        .background {
-            MeshGradient(
-                width: 3, height: 3,
-                points: [
-                    [0.0, 0.0], [0.5, 0], [1.0, 0.0],
-                    [0.0, 0.5], [0.6, 0.5], [1.0, 0.5],
-                    [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
-                ],
-                colors: [
-                    .background, .thistle, .orchidPink,
-                    .orchidPink, .thistle, .background,
-                    .lavenderPink, .thistle, .lavenderPink
-                ],
-                smoothsColors: true,
-                colorSpace: .perceptual
-            )
-            .ignoresSafeArea()
-        }
+        .modifier(BackgroundMeshModifier())
         .onAppear {
             withAnimation(.easeOut(duration: 1.0).delay(0.2)) {
                 showIntro = true
@@ -61,15 +45,15 @@ struct IntroWelcomeView: View {
 }
 
 extension Text {
-    func exposureTitle() -> some View {
+    func exposureFont(size: CGFloat = 56) -> some View {
         self
-            .font(.custom("Exposure Trial VAR", size: 56))
+            .font(.custom("Exposure Trial VAR", size: size))
             .foregroundStyle(.text)
     }
 
-    func interSubheadline() -> some View {
+    func interFont(size: CGFloat = 24) -> some View {
         self
-            .font(.custom("Inter", size: 24))
+            .font(.custom("Inter", size: size))
             .foregroundStyle(.text)
     }
 }

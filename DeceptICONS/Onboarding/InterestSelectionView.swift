@@ -15,10 +15,10 @@ struct InterestSelectionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Interests")
-                .exposureTitle()
+                .exposureFont()
 
             Text("Connect through shared interests.")
-                .interSubheadline()
+                .interFont()
 
             Spacer()
                 .frame(height: 12)
@@ -55,24 +55,7 @@ struct InterestSelectionView: View {
             .buttonStyle(IntroButtonStyle())
         }
         .padding()
-        .background {
-            MeshGradient(
-                width: 3, height: 3,
-                points: [
-                    [0.0, 0.0], [0.5, 0], [1.0, 0.0],
-                    [0.0, 0.5], [0.6, 0.5], [1.0, 0.5],
-                    [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
-                ],
-                colors: [
-                    .background, .thistle, .orchidPink,
-                    .orchidPink, .thistle, .background,
-                    .lavenderPink, .thistle, .lavenderPink
-                ],
-                smoothsColors: true,
-                colorSpace: .perceptual
-            )
-            .ignoresSafeArea()
-        }
+        .modifier(BackgroundMeshModifier())
     }
 }
 

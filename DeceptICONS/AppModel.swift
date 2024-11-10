@@ -10,12 +10,12 @@ import SwiftUI
 
 class AppModel: ObservableObject {
     @Published var currentPage: AppPage = .welcome
-    @Published var account: AccountInfo? = nil
+    @Published var account: AccountInfo? = nil {
 //    @Published var account: AccountInfo? = Defaults[.account] {
-//        didSet {
-//            Defaults[.account] = account
-//        }
-//    }
+        didSet {
+            Defaults[.account] = account
+        }
+    }
 
     func nextPage() {
         var nextPage = AppPage(rawValue: currentPage.rawValue + 1) ?? .welcome

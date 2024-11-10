@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Location: Identifiable, Codable {
+struct Location: Identifiable, Hashable, Codable {
     var id: String { name }
     let name: String
 
