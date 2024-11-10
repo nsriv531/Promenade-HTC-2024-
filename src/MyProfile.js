@@ -60,9 +60,11 @@ const MyProfile = () => {
   };
 
   return (
-    <div className={`profile-container ${isTransitioning ? "animate-fadeOut" : ""}`}>
+    <div className={`profile-container flex-col ${isTransitioning ? "animate-fadeOut" : ""}`}>
+      <div className='self-start'>
+        <BackButton />
+      </div>
       <div className={`profile-card ${isTransitioning ? "animate-slideUp" : ""}`}>
-      <BackButton />
         <h2>{user.firstName ? `Hello, ${user.firstName}` : "Hello, User"}</h2>
         
         <p className="profile-rating">Welcome: {user.firstName} ★</p>

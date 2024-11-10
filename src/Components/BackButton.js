@@ -17,13 +17,15 @@ function BackButton() {
   };
 
   return (
-    <button
+    <div className='flex'>
+      <button
       onClick={handleBack}
-      className="flex items-center text-wenge text-lg font-inter-medium pl-4"
-    >
+      className="items-start text-wenge text-lg font-inter-medium pl-4"
+      >
       <span className="pr-2 text-2xl">←</span> {/* Back arrow icon */}
       Back
     </button>
+    </div>
   );
 }
 
