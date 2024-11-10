@@ -43,6 +43,24 @@ struct MatchFinderView: View {
                 try? await Task.sleep(for: .milliseconds(200))
             }
         }
+        .onChange(of: [startingLocation, finalLocation]) { _ in
+            Task {
+                results = []
+                let matches = recommendUsers(me, firebase.users, finalLocation)
+
+                for match in matches {
+                    withAnimation(.smooth(duration: 0.2)) {
+                        if results != nil {
+                            results?.append(match)
+                        } else {
+                            results = [match]
+                        }
+                    }
+
+                    try? await Task.sleep(for: .milliseconds(200))
+                }
+            }
+        }
     }
 
     func recommendUsers(

@@ -28,6 +28,21 @@ struct SentInvitesView: View {
         .task {
             await firebase.fetchSentInvites()
         }
+        .overlay {
+            VStack {
+                Spacer()
+
+                if firebase.sentInvites.contains(where: { $0.status == .accepted }) {
+                    Button("Start a Promenade") {
+                        Task {
+                            await firebase.startPromenade()
+                        }
+                    }
+                    .buttonStyle(IntroButtonStyle())
+                }
+            }
+            .padding()
+        }
     }
 }
 
@@ -93,6 +108,19 @@ extension SentInvitesView {
                             Text("Age range: \(invite.toUser.ageRange.name)")
                                 .lineLimit(5)
                                 .fixedSize(horizontal: false, vertical: true)
+
+                            if invite.status != .accepted {
+                                Button {
+                                    Task {
+                                        await FirebaseManager.shared.unsendInvite(invite)
+                                    }
+                                } label: {
+                                    Text(invite.status == .pending ? "Unsend invite" : "Got it")
+                                        .contentTransition(.numericText(countsDown: true))
+                                        .shadow(color: .orchidPink.opacity(0.5), radius: 10)
+                                }
+                                .buttonStyle(IntroButtonStyle(highlight: true, cornerRadius: 16, padding: 8))
+                            }
                         }
                     }
                 }

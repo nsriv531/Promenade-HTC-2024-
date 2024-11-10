@@ -25,10 +25,10 @@ struct Invite: Identifiable, Hashable, Codable, Defaults.Serializable {
         self.status = status
     }
 
-    enum InviteStatus: String, Hashable, Codable {
-        case pending
-        case accepted
-        case declined
+    enum InviteStatus: Int, Hashable, Codable {
+        case pending = 0
+        case accepted = 1
+        case declined = 2
 
         var name: String {
             switch self {

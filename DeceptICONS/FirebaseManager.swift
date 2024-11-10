@@ -5,29 +5,38 @@
 //  Created by Kai Azim on 2024-11-09.
 //
 
+import Defaults
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 import Foundation
 import GoogleSignIn
-import Defaults
 
 @MainActor
 class FirebaseManager: ObservableObject {
     static let shared = FirebaseManager()
 
+    @Published private(set) var promenadeUsers: [User] = []
+    @Published private(set) var currentlyInPromenade: Bool = Defaults[.currentlyInPromenade] {
+        didSet { Defaults[.currentlyInPromenade] = currentlyInPromenade }
+    }
+
     @Published private(set) var account: User? = Defaults[.account] {
         didSet { Defaults[.account] = account }
     }
+
     @Published private(set) var locations: [Location] = Defaults[.locationCache] {
         didSet { Defaults[.locationCache] = locations }
     }
+
     @Published private(set) var users: [User] = Defaults[.accountsCache] {
         didSet { Defaults[.accountsCache] = users }
     }
+
     @Published private(set) var sentInvites: [Invite] = Defaults[.sentInvitesCache] {
         didSet { Defaults[.sentInvitesCache] = sentInvites }
     }
+
     @Published private(set) var receivedInvites: [Invite] = Defaults[.receivedInvitesCache] {
         didSet { Defaults[.receivedInvitesCache] = receivedInvites }
     }
@@ -69,11 +78,49 @@ class FirebaseManager: ObservableObject {
     //        )
     //    }
 
+    func startPromenade() async {
+        let participants: [User] = sentInvites.filter { $0.status == .accepted }.map(\.toUser) + [account!]
+
+        // Remove sent invites for the promenade
+        for invite in sentInvites where invite.status == .accepted {
+            await unsendInvite(invite)
+        }
+
+        // Add participants to active promenade
+        let reference = db.collection("activePromenades")
+        _ = try? reference.addDocument(from: participants)
+
+        promenadeUsers = participants
+        currentlyInPromenade = true
+    }
+}
+
+// MARK: - Invites
+
+extension FirebaseManager {
     func sendInvite(_ invite: Invite) async {
         sentInvites = Array(Set(sentInvites + [invite])) // Remove duplicates
 
         let reference = db.collection("invites")
         _ = try? reference.addDocument(from: invite)
+    }
+
+    func unsendInvite(_ invite: Invite) async {
+        sentInvites = sentInvites.filter { $0 != invite }
+
+        guard let documents = try? await db.collection("invites").getDocuments() else {
+            return
+        }
+
+        let reference = documents.documents.first { item in
+            guard let data = try? item.data(as: Invite.self) else {
+                return false
+            }
+            return data == invite
+        }
+
+        try? await reference?.reference.delete()
+        await fetchUsers()
     }
 
     func replyToInvite(_ invite: Invite, _ status: Invite.InviteStatus) async {
@@ -102,6 +149,7 @@ class FirebaseManager: ObservableObject {
 }
 
 // MARK: - Manage Account
+
 extension FirebaseManager {
     func signUpWithEmail(_ email: String, password: String) async {
         _ = try? await auth.createUser(withEmail: email, password: password)
@@ -117,7 +165,7 @@ extension FirebaseManager {
 
     func updateAccount(_ user: User) async {
         guard
-            let currentUserEmail = currentUserEmail,
+            let currentUserEmail,
             let documents = try? await db.collection("users").getDocuments()
         else {
             return

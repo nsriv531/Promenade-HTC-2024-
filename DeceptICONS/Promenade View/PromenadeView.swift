@@ -23,20 +23,20 @@ struct PromenadeView: View {
                     Spacer()
                         .frame(height: 12)
 
-                    NavigationLink("Start a new adventure") {
+                    NavigationLink("Start a new adventure...") {
                         LocationChooserView()
                     }
                     .buttonStyle(IntroButtonStyle())
 
                     if !firebase.sentInvites.isEmpty {
-                        NavigationLink("View Sent Invites") {
+                        NavigationLink("View Sent Invites (\(firebase.sentInvites.count))") {
                             SentInvitesView()
                         }
                         .buttonStyle(IntroButtonStyle())
                     }
 
                     if !firebase.receivedInvites.isEmpty {
-                        NavigationLink("View Received Invites") {
+                        NavigationLink("View Received Invites (\(firebase.receivedInvites.count))") {
                             ReceivedInvitesView()
                         }
                         .buttonStyle(IntroButtonStyle())
