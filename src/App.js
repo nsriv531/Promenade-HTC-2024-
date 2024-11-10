@@ -8,7 +8,7 @@ function App() {
 
   const handleNavigate = (path) => {
     setIsTransitioning(true);
-    setTimeout(() => navigate(path), 500); // Navigate after animation
+    setTimeout(() => navigate(path), 1000); // Navigate after animation
   }
 
   return (

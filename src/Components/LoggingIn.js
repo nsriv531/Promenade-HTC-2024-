@@ -9,17 +9,23 @@ function LoggingIn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === 'admin' && password === 'password') {
-      navigate('/dashboard'); // Redirect to dashboard if credentials are correct
+      handleNavigate('/dashboard'); // Redirect to dashboard if credentials are correct
     } else {
       alert('Invalid credentials'); // Alert if credentials are incorrect
     }
   };
+
+  const handleNavigate = (path) => {
+    setIsTransitioning(true);
+    setTimeout(() => navigate(path), 500); // Navigate after animation
+  }
 
   // const emailSubmit = async (e) => {
   //   e.preventDefault();
@@ -34,7 +40,7 @@ function LoggingIn() {
     const provider = new GoogleAuthProvider(); // Create GoogleAuthProvider instance
     createGoogleUser(provider)
       .then(() => {
-        navigate("/dashboard");
+        handleNavigate("/dashboard");
       })
       .catch((error) => {
         console.error('Error signing in with Google:', error);
@@ -44,7 +50,7 @@ function LoggingIn() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-gradient-to-r from-lavender-pink to-light-cyan">
       { userLoggedIn && (<Navigate to={'/dashboard'} replace={true} />) }
-      <form onSubmit={handleSubmit} className="bg-white p-8 max-w-lg mx-auto rounded-lg shadow-lg">
+      <form onSubmit={handleSubmit} className={`bg-white p-8 max-w-lg mx-auto rounded-lg shadow-lg ${isTransitioning ? "animate-fadeOut" : "animate-slideIn"}`}>
         <h2 className="text-2xl font-bold mb-6 text-gray-800">Login</h2>
 
         <label className="block mb-4 font-bold text-gray-700">

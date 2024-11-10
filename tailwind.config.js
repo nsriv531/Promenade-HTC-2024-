@@ -37,8 +37,8 @@ module.exports = {
       animation: {
         slideUp: 'slideUp 1s forwards',
         slideDown: 'slideDown 1s forwards',
-        fadeOut: 'fadeOut 1s forwards',
-        slideIn: 'slideIn 1s forwards',
+        fadeOut: 'fadeOut 1s ease-out forwards',
+        slideIn: 'slideIn 1s ease-out forwards',
       },
     },
   },
