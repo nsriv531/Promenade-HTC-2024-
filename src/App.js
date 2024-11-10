@@ -5,9 +5,9 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <div className="App flex h-screen bg-gradient-to-r from-lavender-pink to-light-cyan">
-      <header className="App-header m-auto">
-        <div className='py-56'>
+    <div className="App h-screen flex justify-center items-center bg-gradient-to-r from-lavender-pink to-light-cyan">
+      <header className="App-header text-center">
+        <div className='py-56 m-auto'>
           <h1 className='font-customi text-wenge'>
             Promenade
           </h1>
@@ -16,7 +16,7 @@ function App() {
           </p>
         </div>
         <div className="">
-          <button className="font-inter text-wenge bg-transparent h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan" onClick={() => navigate("/login")}>Continue</button>
+          <button className="font-inter text-wenge h-12 w-80 rounded-xl bg-opacity-45 bg-light-cyan" onClick={() => navigate("/login")}>Continue</button>
         </div>
       </header>
     </div>
