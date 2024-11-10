@@ -5,8 +5,8 @@
 //  Created by Kai Azim on 2024-11-09.
 //
 
-import SwiftUI
 import Defaults
+import SwiftUI
 
 struct LocationChooserView: View {
     @State private var initialLocation: Location? = nil
@@ -19,7 +19,7 @@ struct LocationChooserView: View {
                 Group {
                     Text("Promenade...")
                         .exposureFont()
-                    
+
                     Text("Start a new adventure.")
                         .interFont()
                 }
@@ -38,7 +38,7 @@ struct LocationChooserView: View {
                 .buttonStyle(IntroButtonStyle())
 
                 Spacer()
-                
+
                 NavigationLink("Continue") {
                     if let me, let initialLocation, let finalLocation {
                         MatchFinderView(me: me, startingLocation: initialLocation, finalLocation: finalLocation)
@@ -78,9 +78,9 @@ struct LocationSearchView: View {
 
     var searchResults: [Location] {
         if searchText.isEmpty {
-            return firebase.locations
+            firebase.locations
         } else {
-            return firebase.locations.filter { $0.name.contains(searchText) }
+            firebase.locations.filter { $0.name.contains(searchText) }
         }
     }
 }

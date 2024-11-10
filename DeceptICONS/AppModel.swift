@@ -21,7 +21,7 @@ class AppModel: ObservableObject {
         var nextPage = AppPage(rawValue: currentPage.rawValue + 1) ?? .welcome
 
         if account != nil, nextPage == .createAccount {
-            if account?.interests.isEmpty ?? true{
+            if account?.interests.isEmpty ?? true {
                 nextPage = .interests
             } else {
                 nextPage = .home

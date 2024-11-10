@@ -10,4 +10,7 @@ import Foundation
 
 extension Defaults.Keys {
     static let account = Key<User?>("account", default: nil)
+    static let accountsCache = Key<[User]>("accountsCache", default: [])
+    static let locationCache = Key<[Location]>("locationCache", default: [])
+    static let sentInvitesCache = Key<[Invite]>("sentInvitesCache", default: [])
 }

@@ -13,7 +13,7 @@ public struct WrappingCollectionView<Data: RandomAccessCollection, Content: View
     private let singleItemHeight: CGFloat
     private let content: (Data.Element) -> Content
     @State private var totalHeight: CGFloat = .zero
-    
+
     public init(
         data: Data,
         spacing: CGFloat = 8,
@@ -25,7 +25,7 @@ public struct WrappingCollectionView<Data: RandomAccessCollection, Content: View
         self.singleItemHeight = singleItemHeight
         self.content = content
     }
-    
+
     public var body: some View {
         ZStack(alignment: .topLeading) {
             GeometryReader { geometry in
@@ -40,11 +40,11 @@ public struct WrappingCollectionView<Data: RandomAccessCollection, Content: View
         }
         .frame(height: totalHeight)
     }
-    
+
     private func generateContent(in geometry: GeometryProxy) -> some View {
         var width = CGFloat.zero
         var height = CGFloat.zero
-        
+
         return ZStack(alignment: .topLeading) {
             ForEach(data) { item in
                 content(item)
@@ -55,7 +55,7 @@ public struct WrappingCollectionView<Data: RandomAccessCollection, Content: View
                                 width = 0
                                 height -= dimension.height + spacing
                             }
-                            
+
                             let result = width
                             if item.id == data.last?.id {
                                 width = 0
@@ -82,7 +82,7 @@ public struct WrappingCollectionView<Data: RandomAccessCollection, Content: View
 
 struct HeightPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
-    
+
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
         value += nextValue()
     }

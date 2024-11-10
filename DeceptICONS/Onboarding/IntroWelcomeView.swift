@@ -46,14 +46,12 @@ struct IntroWelcomeView: View {
 
 extension Text {
     func exposureFont(size: CGFloat = 56) -> some View {
-        self
-            .font(.custom("Exposure Trial VAR", size: size))
+        font(.custom("Exposure Trial VAR", size: size))
             .foregroundStyle(.text)
     }
 
     func interFont(size: CGFloat = 24) -> some View {
-        self
-            .font(.custom("Inter", size: size))
+        font(.custom("Inter", size: size))
             .foregroundStyle(.text)
     }
 }
@@ -63,11 +61,11 @@ struct Trapezoid: Shape {
         var path = Path()
         let width = rect.size.width
         let height = rect.size.height
-        path.move(to: CGPoint(x: 0.00071*width, y: 0.99917*height))
-        path.addLine(to: CGPoint(x: 0.00071*width, y: 0.43939*height))
-        path.addLine(to: CGPoint(x: 0.99977*width, y: 0))
-        path.addLine(to: CGPoint(x: 0.99977*width, y: 0.12121*height))
-        path.addLine(to: CGPoint(x: 0.00071*width, y: 0.99917*height))
+        path.move(to: CGPoint(x: 0.00071 * width, y: 0.99917 * height))
+        path.addLine(to: CGPoint(x: 0.00071 * width, y: 0.43939 * height))
+        path.addLine(to: CGPoint(x: 0.99977 * width, y: 0))
+        path.addLine(to: CGPoint(x: 0.99977 * width, y: 0.12121 * height))
+        path.addLine(to: CGPoint(x: 0.00071 * width, y: 0.99917 * height))
         path.closeSubpath()
         return path
     }

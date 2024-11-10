@@ -5,15 +5,25 @@
 //  Created by Kai Azim on 2024-11-09.
 //
 
+import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
-import SwiftUI
+import Foundation
+import GoogleSignIn
+import Defaults
 
 class FirebaseManager: ObservableObject {
     static let shared = FirebaseManager()
 
-    @Published var locations: [Location] = []
-    @Published var users: [User] = []
+    @Published var locations: [Location] = Defaults[.locationCache] {
+        didSet { Defaults[.locationCache] = locations }
+    }
+    @Published var users: [User] = Defaults[.accountsCache] {
+        didSet { Defaults[.accountsCache] = users }
+    }
+    @Published var sentInvites: [Invite] = Defaults[.sentInvitesCache] {
+        didSet { Defaults[.sentInvitesCache] = sentInvites }
+    }
 
     private var db: Firestore { Firestore.firestore() }
 
@@ -24,6 +34,28 @@ class FirebaseManager: ObservableObject {
             await fetchLocations()
             await fetchUsers()
         }
+    }
+
+    func signInWithGoogle() async throws {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+
+        let controller : UIViewController = await (UIApplication.shared.windows.first?.rootViewController)!
+        let result = try? await GIDSignIn.sharedInstance.signIn(withPresenting: controller)
+
+        guard
+            let user = result?.user,
+            let idToken = user.idToken?.tokenString
+        else {
+            return
+        }
+
+        let credential = GoogleAuthProvider.credential(
+            withIDToken: idToken,
+            accessToken: user.accessToken.tokenString
+        )
     }
 
     func fetchLocations() async {

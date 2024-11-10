@@ -1,5 +1,5 @@
 //
-//  IntroButtonStyle.swift
+//  Modifiers.swift
 //  DeceptICONS
 //
 //  Created by Kai Azim on 2024-11-09.
@@ -9,23 +9,25 @@ import SwiftUI
 
 struct IntroButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var enabled
+    let highlight: Bool
     let cornerRadius: CGFloat
     let padding: CGFloat
 
-    init(cornerRadius: CGFloat = 20, padding: CGFloat = 18) {
+    init(highlight: Bool = false, cornerRadius: CGFloat = 20, padding: CGFloat = 18) {
+        self.highlight = highlight
         self.cornerRadius = cornerRadius
         self.padding = padding
     }
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundStyle(.text.opacity(enabled ? 1 : 0.5))
+            .foregroundStyle((highlight ? Color(.background) : Color(.text)).opacity(enabled ? 1 : 0.5))
             .font(.headline)
             .padding(padding)
             .frame(maxWidth: .infinity)
             .background {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .foregroundStyle(Color(.background))
+                    .foregroundStyle(highlight ? Color(.text) : Color(.background))
                     .opacity(0.3)
             }
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
@@ -49,6 +51,7 @@ struct InputModifier: ViewModifier {
 struct BackgroundMeshModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .frame(maxWidth: .infinity)
             .background {
                 MeshGradient(
                     width: 3, height: 3,

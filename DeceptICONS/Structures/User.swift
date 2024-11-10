@@ -1,14 +1,14 @@
 //
-//  AccountInfo.swift
+//  User.swift
 //  DeceptICONS
 //
 //  Created by Kai Azim on 2024-11-09.
 //
 
-import SwiftUI
 import Defaults
+import SwiftUI
 
-struct User: Identifiable, Codable, Defaults.Serializable {
+struct User: Identifiable, Hashable, Codable, Defaults.Serializable {
     var id: String { email }
 
     var firstName: String

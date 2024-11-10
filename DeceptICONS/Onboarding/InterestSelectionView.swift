@@ -5,7 +5,6 @@
 //  Created by Kai Azim on 2024-11-09.
 //
 
-
 import SwiftUI
 
 struct InterestSelectionView: View {

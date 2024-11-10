@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Defaults
 
-struct Location: Identifiable, Hashable, Codable {
+struct Location: Identifiable, Hashable, Codable, Defaults.Serializable {
     var id: String { name }
     let name: String
 }

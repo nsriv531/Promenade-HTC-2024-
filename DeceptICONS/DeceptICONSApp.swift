@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 @main
 struct DeceptICONSApp: App {
@@ -13,5 +14,16 @@ struct DeceptICONSApp: App {
         WindowGroup {
             ContentView()
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    // Handle Google Sign In
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+    ) -> Bool {
+        GIDSignIn.sharedInstance.handle(url)
     }
 }
