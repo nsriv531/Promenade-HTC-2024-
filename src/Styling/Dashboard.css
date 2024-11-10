@@ -1,11 +1,13 @@
 
+/* In your Dashboard.css */
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(to right, lavenderpink, lightcyan); /* Adjust gradient if needed */
+}
   .dashboard-header {
     width: 100%;
     display: flex;
