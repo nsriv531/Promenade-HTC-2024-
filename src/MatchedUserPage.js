@@ -6,13 +6,13 @@ import { useLocation } from "react-router-dom";
 
 const MatchedUsersPage = () => {
   const location = useLocation();
-  const { startLocation } = location.state || {}; // Access the start location passed from LocationList
+  const { startLocation, endLocation } = location.state || {}; // Access start and end locations passed from LocationList
   const [matchedUsers, setMatchedUsers] = useState([]);
 
   useEffect(() => {
     const fetchMatchedUsers = async () => {
       try {
-        // Get all users from Firestore
+        // Fetch all users from Firestore
         const usersSnapshot = await getDocs(collection(db, "users"));
         const usersData = usersSnapshot.docs.map((doc) => doc.data());
 
@@ -20,16 +20,16 @@ const MatchedUsersPage = () => {
         const filteredUsers = usersData.filter(
           (user) =>
             user.preferredLocations &&
-            user.preferredLocations.includes(startLocation.category) // Check if the user's preferredLocations includes the startLocation category
+            user.preferredLocations.includes(startLocation.category) // Check if user's preferred locations include start location category
         );
 
-        // Get all locations in the same category as startLocation for use as possible end locations
+        // Fetch all locations in the same category as endLocation for use as possible end locations
         const locationsSnapshot = await getDocs(collection(db, "locations"));
         const locationsData = locationsSnapshot.docs
           .map((doc) => doc.data())
-          .filter((location) => location.category === startLocation.category);
+          .filter((location) => location.category === endLocation.category);
 
-        // Select three random users from the filtered list and assign them a random end location
+        // Select three random users and assign each a random end location
         const randomUsers = filteredUsers
           .sort(() => 0.5 - Math.random())
           .slice(0, 3)
@@ -45,10 +45,10 @@ const MatchedUsersPage = () => {
       }
     };
 
-    if (startLocation) {
+    if (startLocation && endLocation) {
       fetchMatchedUsers();
     }
-  }, [startLocation]);
+  }, [startLocation, endLocation]);
 
   return (
     <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
@@ -58,8 +58,8 @@ const MatchedUsersPage = () => {
           {matchedUsers.map((user, index) => (
             <li key={index} className="mb-2">
               <strong>User:</strong> {user.firstName} <br />
-              <strong>Starting Location:</strong> {startLocation.name} <br />
-              <strong>Random End Location:</strong> {user.endLocation}
+              <strong>Starting Location:</strong> {startLocation} <br />
+              <strong>Random End Location:</strong> {endLocation}
             </li>
           ))}
         </ul>

@@ -34,10 +34,10 @@ const LocationList = () => {
     setEndLocation(data);
     localStorage.setItem("endLocation", JSON.stringify(data));
   };
-
+  
   const handleContinue = () => {
     if (startLocation && endLocation) {
-      navigate("/matched-users", { state: { startLocation } });
+      navigate("/matched-users", { state: { startLocation, endLocation } });
     }
   };
 
