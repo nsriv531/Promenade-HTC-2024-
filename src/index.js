@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoggingIn from "./Components/LoggingIn";
 //import CreateAccount from "./Components/CreateAccount";
 import SignUp from "./Components/SignUp";
-import { ChipDefault } from "./Components/Interests";
+import Interests from "./Components/Interests";
 import AuthProvider from './Contexts/authContexts';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -22,7 +22,7 @@ root.render(
           <Route path="/login" element={<LoggingIn />} />    
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/interests" element={<ChipDefault />} />
+          <Route path="/interests" element={<Interests />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
